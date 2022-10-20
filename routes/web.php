@@ -59,4 +59,4 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::view('/estudiante', "estudiante")->name('estudiante');
 
 // administrador
-Route::view('/administrador', "admin")->name('admin');
+Route::view('/admin', "admin")->name('admin');
