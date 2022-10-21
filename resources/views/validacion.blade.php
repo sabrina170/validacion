@@ -6,11 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/boxicons.min.css">
+    <link rel="stylesheet" href="{{asset('css2/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css2/boxicons.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="css/style.css">
-    
+    <link rel="stylesheet" href="{{asset('css2/style.css')}}">
 
 
     <title>Validacion-MugCentro</title>
@@ -31,16 +30,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.blade.php">INICIO</a>
+                        <a class="nav-link active" href="{{route('index')}}">INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="validacion.blade.php">VALIDACION DE CERTIFICADO</a>
+                        <a class="nav-link" href="{{route('validacion')}}">VALIDACION DE CERTIFICADO</a>
                     </li>
                 </ul>
-                <button class="btn btn-primary ms-lg-3" href="login.blade.php">INICIAR SESION</button>
+                <a class="btn btn-primary ms-lg-3" href="{{route('login')}}">INICIAR SESION</a>
             </div>
         </div>
     </nav><!-- //FIN DEL MENU-->
+
     <!-- VALR DE CERTIFICACION -->
     <section class="row w-100 py-0 bg-light" id="features">
 
@@ -57,17 +57,18 @@
                         <h2>Consultar Certificado</h2>
                         <p> NOTA: Se pueden visualizar los codigos de los certificados del año 2022.</p>
                     </div>
-                    <form>
+                    <form action="{{route('buscaralumno')}}" method="post">
+                        @csrf
                         <div class="row">
                           <div class="col-md-5 offset-md-1 mt-2">
-                            <input type="text" class="form-control col-sm-2 col-form-label" placeholder="Ingrese Codigo">
-                          </div>
-                          <div class="col-md-5 md-1 mt-2">
-                            <input type="text" class="form-control col-sm-2 col-form-label" placeholder="Ingrese DNI">
-                          </div>
+                            <input type="number" class="form-control col-sm-2 col-form-label"
+                            placeholder="Ingrese DNI" name="dni">
+                         </div>
+                         
+                          
+                          
                         </div>
                         
-                    </form>
                 </div>
             </div>
             <div class="row mb-5 mt-4">
@@ -75,6 +76,7 @@
                     <button class="btn btn-primary" type="submit">Buscar Certificado</button>
                 </div>
             </div>
+        </form>
         </div>
        
         <div class="col-lg-6 py-2">
@@ -82,6 +84,12 @@
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
                         <h2>Donde ubicar tu codigo</h2>
+
+                         @foreach($filterResult as $cer) 
+                         Alumno:   <h5>{{$cer->nombres}} {{$cer->apellidos}}</h5>
+                            <img class="" src="/images-cer/{{$cer->image}}" title="Certificado">
+ 
+@endforeach
                     </div>
                 </div>
                 <div class="col-img2 mt-1"></div>    

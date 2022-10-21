@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/boxicons.min.css">
+    <link rel="stylesheet" href="{{asset('css2/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css2/boxicons.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css2/style.css')}}">
 
 
     <title>Validacion-MugCentro</title>
@@ -48,7 +48,7 @@
                 <div class="col-lg-7 mx-auto text-center">
                     <h1 class="display-4 text-white">Certificacion en el Mug Centro Peru</h1>
                     <p class="text-white my-3">El primerpaso para una carrera Profesional</p>
-                    <a href="#" class="btn btn-outline-light">VALIDA TU CODIGO</a>
+                    <a href="{{route('validacion')}}" class="btn btn-outline-light">VALIDA TU CODIGO</a>
                 </div>
             </div>
         </div>
@@ -428,6 +428,6 @@
 
 
 
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('js2/bootstrap.bundle.min.js')}}"></script>
 </body>
 </html>

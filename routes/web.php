@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlumnoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\UserController;
@@ -57,6 +58,15 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 // ESTUDIANTE
 Route::view('/estudiante', "estudiante")->name('estudiante');
+Route::view('/alumnos', "alumnos")->name('alumnos');
+
+Route::get('/alumnos', [AlumnoController::class, "index"])->name('alumnos.index');
+Route::post('/createalum', [AlumnoController::class, "store"])->name('crearalumno');
+Route::post('/buscaralumno', [AlumnoController::class, "buscar"])->name('buscaralumno');
+
+Route::delete('alumno/{alumno}/eliminar', [AlumnoController::class, "destroy"])->name('alumno.delete');
+
+
 
 // administrador
 Route::view('/admin', "admin")->name('admin');

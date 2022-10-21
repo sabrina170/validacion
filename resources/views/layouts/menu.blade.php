@@ -46,7 +46,7 @@
                 <nav aria-label="breadcrumb" class="-intro-x h-[45px] mr-auto">
                     <ol class="breadcrumb breadcrumb-light">
                         <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Estudiante</li>
+                        <li class="breadcrumb-item active" aria-current="page">Administrador</li>
                     </ol>
                 </nav>
                 
@@ -60,7 +60,7 @@
                             <li class="p-2">
                                 <div class="font-medium">{{Auth::user()->name}}</div>
                                 <div class="text-xs text-white/60 
-                                mt-0.5 dark:text-slate-500">Estudiante</div>
+                                mt-0.5 dark:text-slate-500">Administrador</div>
                             </li>
                             <li>
                                 <hr class="dropdown-divider border-white/[0.08]">
@@ -80,15 +80,15 @@
             <nav class="side-nav">
                 <ul>
                     <li>
-                        <a href="side-menu-light-inbox.html" class="side-menu">
+                        <a href="{{route('alumnos.index')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="inbox"></i> </div>
-                            <div class="side-menu__title"> Inbox </div>
+                            <div class="side-menu__title"> Alumnos </div>
                         </a>
                     </li>
                     <li>
-                        <a href="side-menu-light-file-manager.html" class="side-menu">
+                        <a href="#" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
-                            <div class="side-menu__title"> File Manager </div>
+                            <div class="side-menu__title">Usuarios</div>
                         </a>
                     </li>
                     

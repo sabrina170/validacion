@@ -46,7 +46,7 @@ class UserController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
             if (Auth::user()->hasRole('admin')) {
-                return redirect()->intended('admin');
+                return redirect()->intended('alumnos');
             } else {
                 return redirect()->intended('estudiante');
             }
