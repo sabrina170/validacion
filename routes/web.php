@@ -66,6 +66,10 @@ Route::post('/buscaralumno', [AlumnoController::class, "buscar"])->name('buscara
 
 Route::delete('alumno/{alumno}/eliminar', [AlumnoController::class, "destroy"])->name('alumno.delete');
 
+// USUARIOS
+Route::get('/usuarios', [UserController::class, "index"])->name('usuarios.index');
+Route::delete('usuario/{user}/eliminar', [UserController::class, "destroy"])->name('usuario.delete');
+
 
 
 // administrador

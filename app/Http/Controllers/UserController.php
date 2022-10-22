@@ -14,6 +14,13 @@ use Database\Seeders\RoleSeeder;
 
 class UserController extends Controller
 {
+
+    public function index()
+    {
+        $users  = User::orderByDesc('id')->get();
+        return view('usuarios.index', compact('users'));
+    }
+
     public function register(Request $request)
     {
         //falta valiaar datos que sean verdaderos
@@ -25,11 +32,11 @@ class UserController extends Controller
         // $user->estado = '1';
         // $user->ku = date("Ymd-His");
         // $user->tipo = 1;
-
+        $user->assignRole('estudiante');
         $user->save();
         Auth::login($user);
 
-        return redirect(route('login'));
+        return redirect(route('usuarios.index'));
     }
 
     public function login(Request $request)
@@ -63,4 +70,12 @@ class UserController extends Controller
         $request->session()->regenerateToken();
         return redirect(route('login'));
     }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        $nombre = $user->nombres;
+        return redirect()->route('usuarios.index');
+    }
+
 }

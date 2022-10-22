@@ -131,8 +131,20 @@ class AlumnoController extends Controller
         //     ->select('id', 'nombres', 'image')
         //     ->where('id', $dni);
 
-        $dni = $request->get('dni');
-        $filterResult = Alumno::where('dni', 'LIKE', '%' . $dni . '%')->get();
+        $dni = $request->dni;
+        $cod = $request->cod;
+
+
+       if(isset($dni) && isset($cod)){
+        $dni = $request->dni;
+        $cod = $request->codigo_cer;
+        $filterResult = Alumno::where('dni', 'LIKE', '%' . $dni . '%')->orWhere('codigo_cer', 'LIKE', '%' . $cod . '%')->get();
+        return view('validacion', compact('dni', 'filterResult'));
+       }
+       else{
+        return view('validacion');
+       }
+
         // return response()->json($filterResult);
 
         // dd($certificado);
@@ -140,7 +152,7 @@ class AlumnoController extends Controller
 
         // $nombres = $certificado->nombres;
         // $certificados  = Alumno::orderByDesc('id')->get();
-        return view('validacion', compact('dni', 'filterResult'));
+
         // return redirect()->route('validacion');
     }
 }

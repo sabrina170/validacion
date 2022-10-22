@@ -64,11 +64,14 @@
                             <input type="number" class="form-control col-sm-2 col-form-label"
                             placeholder="Ingrese DNI" name="dni">
                          </div>
-                         
-                          
-                          
+
+                         <div class="col-md-5 offset-md-1 mt-2">
+                            <input type="number" class="form-control col-sm-2 col-form-label"
+                            placeholder="Ingrese codigo" name="cod">
+                         </div>
+
                         </div>
-                        
+
                 </div>
             </div>
             <div class="row mb-5 mt-4">
@@ -78,21 +81,26 @@
             </div>
         </form>
         </div>
-       
+
         <div class="col-lg-6 py-2">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
                         <h2>Donde ubicar tu codigo</h2>
 
-                         @foreach($filterResult as $cer) 
+@if (isset($dni))
+{{-- {{$dni}} --}}
+@endif
+@if (isset($filterResult))
+                         @foreach($filterResult as $cer)
                          Alumno:   <h5>{{$cer->nombres}} {{$cer->apellidos}}</h5>
                             <img class="" src="/images-cer/{{$cer->image}}" title="Certificado">
- 
+
 @endforeach
+@endif
                     </div>
                 </div>
-                <div class="col-img2 mt-1"></div>    
+                <div class="col-img2 mt-1"></div>
             </div>
         </div>
     </section><!-- VALOR DE CERTIFICACION -->

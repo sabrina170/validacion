@@ -15,7 +15,7 @@
             <div class="scrollable">
                 <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="x-circle" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
                 <ul class="scrollable__content py-2">
-                  
+
                     <li>
                         <a href="side-menu-light-inbox.html" class="menu">
                             <div class="menu__icon"> <i data-lucide="inbox"></i> </div>
@@ -28,7 +28,7 @@
                             <div class="menu__title"> File Manager </div>
                         </a>
                     </li>
-                   
+
                 </ul>
             </div>
         </div>
@@ -39,7 +39,7 @@
                 <!-- BEGIN: Logo -->
                 <a href="" class="logo -intro-x hidden md:flex xl:w-[180px] block">
                     <img alt="Midone - HTML Admin Template" class="logo__image w-6" src="{{asset('images/icono.png')}}">
-                    <span class="logo__text text-white text-lg ml-3"> Enigma </span> 
+                    <span class="logo__text text-white text-lg ml-3"> Enigma </span>
                 </a>
                 <!-- END: Logo -->
                 <!-- BEGIN: Breadcrumb -->
@@ -49,7 +49,7 @@
                         <li class="breadcrumb-item active" aria-current="page">Administrador</li>
                     </ol>
                 </nav>
-                
+
                 <!-- BEGIN: Account Menu -->
                 <div class="intro-x dropdown w-8 h-8">
                     <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110" role="button" aria-expanded="false" data-tw-toggle="dropdown">
@@ -59,7 +59,7 @@
                         <ul class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
                             <li class="p-2">
                                 <div class="font-medium">{{Auth::user()->name}}</div>
-                                <div class="text-xs text-white/60 
+                                <div class="text-xs text-white/60
                                 mt-0.5 dark:text-slate-500">Administrador</div>
                             </li>
                             <li>
@@ -86,12 +86,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="side-menu">
+                        <a href="{{route('usuarios.index')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
                             <div class="side-menu__title">Usuarios</div>
                         </a>
                     </li>
-                    
+
                 </ul>
             </nav>
             <div class="content">
