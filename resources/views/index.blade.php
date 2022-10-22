@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{asset('css2/boxicons.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="{{asset('css2/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css2/style.css')}}">
+
 
 
     <title>Validacion-MugCentro</title>
@@ -21,7 +23,7 @@
     <nav class="navbar navbar-expand-lg py-3 sticky-top navbar-light bg-white">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img class="logo" src="img/logo.png" alt="">
+                <img class="logo" src="{{asset('img2/logo.png')}}">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,9 +72,9 @@
                             <i class='bx bxs-check-shield'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Service</h5>
-                        <p>Es tendencia. El número de personas que obtienen una certificación 
-                            crece cada día, pero también las certificaciones, y en todos los campos. 
-                            Lo que un día fue una herramienta para los fabricantes de tecnología 
+                        <p>Es tendencia. El número de personas que obtienen una certificación
+                            crece cada día, pero también las certificaciones, y en todos los campos.
+                            Lo que un día fue una herramienta para los fabricantes de tecnología
                             (todo tipo de tecnología), hoy es un estándar para validar conocimientos
                              y competencias profesionales. </p>
                     </div>
@@ -83,9 +85,9 @@
                             <i class='bx bxs-comment-detail'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Service</h5>
-                        <p>Las certificaciones son una manera fiable y contrastada de probar 
-                            o confirmar los conocimientos que tiene una persona sobre una cierta materia. 
-                            Son herramientas aceptadas en todo el mundo y en diferentes ámbitos, desde el 
+                        <p>Las certificaciones son una manera fiable y contrastada de probar
+                            o confirmar los conocimientos que tiene una persona sobre una cierta materia.
+                            Son herramientas aceptadas en todo el mundo y en diferentes ámbitos, desde el
                             estudiantil hasta el profesional.</p>
                     </div>
                 </div>
@@ -95,7 +97,7 @@
                             <i class='bx bxs-cog'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Service</h5>
-                        <p>De hecho, algunos certificados facilitan el desarrollo de determinadas actividades profesionales. 
+                        <p>De hecho, algunos certificados facilitan el desarrollo de determinadas actividades profesionales.
                             O, visto de otro modo, no disponer de ciertos certificados nos impide desarrollar
                              determinadas actividades. </p>
                     </div>
@@ -106,8 +108,8 @@
                             <i class='bx bxs-heart'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Service</h5>
-                        <p>Una certificación es una herramienta para medir el conocimiento de un profesional. 
-                            Mi mejor ejemplo es el brevete de conducir, que en realidad se puede decir que es una certificación, 
+                        <p>Una certificación es una herramienta para medir el conocimiento de un profesional.
+                            Mi mejor ejemplo es el brevete de conducir, que en realidad se puede decir que es una certificación,
                             pues valida que una persona ha seguido un proceso para validarle como conductor. </p>
                     </div>
                 </div>
@@ -201,7 +203,7 @@
             <div class="row g-3">
                 <div class="col-lg-4 col-sm-6">
                     <div class="project">
-                        <img src="img/pro1.jpg" alt="">
+                        <img src="{{asset('img2/pro1.jpg')}}">
                         <div class="overlay">
                             <div>
                                 <h4 class="text-white">1</h4>
@@ -212,7 +214,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="project">
-                        <img src="img/pro2.jpg" alt="">
+                        <img src="{{asset('img2/pro2.jpg')}}">
                         <div class="overlay">
                             <div>
                                 <h4 class="text-white">2</h4>
@@ -223,7 +225,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="project">
-                        <img src="img/pro3.jpg" alt="">
+                        <img src="{{asset('img2/pro3.jpg')}}">
                         <div class="overlay">
                             <div>
                                 <h4 class="text-white">3</h4>
@@ -234,7 +236,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="project">
-                        <img src="img/pro4.jpg" alt="">
+                        <img src="{{asset('img2/pro4.jpg')}}">
                         <div class="overlay">
                             <div>
                                 <h4 class="text-white">4</h4>
@@ -245,7 +247,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="project">
-                        <img src="img/pro5.jpg" alt="">
+                        <img src="{{asset('img2/pro5.jpg')}}">
                         <div class="overlay">
                             <div>
                                 <h4 class="text-white">5</h4>
@@ -256,7 +258,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="project">
-                        <img src="img/pro6.jpg" alt="">
+                        <img src="{{asset('img2/pro6.jpg')}}">
                         <div class="overlay">
                             <div>
                                 <h4 class="text-white">6</h4>
@@ -281,21 +283,21 @@
             <div class="row text-center g-4">
                 <div class="col-lg-4 col-sm-4">
                     <div class="team-member card-effect">
-                        <img src="img/icono.png" alt="">
+                        <img src="{{asset('img2/icono.png')}}">
                         <h5 class="mb-0 mt-4">Conocimiento</h5>
                         <p>Normalmente un examen que sirve para evaluar un conjunto de conocimiento que podría estar precedido por un curso de formación.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-4">
                     <div class="team-member card-effect">
-                        <img src="img/icono.png" alt="">
+                        <img src="{{asset('img2/icono.png')}}">
                         <h5 class="mb-0 mt-4">Proceso</h5>
                         <p>Para obtenerlo es necesario formarse, cumplir unas horas teorícas y de prácticas supervisadas, y finalmente un examen práctico. En este caso el certificado valida que la persona ha hecho el recorrido, un proceso definido.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-4">
                     <div class="team-member card-effect">
-                        <img src="img/icono.png" alt="">
+                        <img src="{{asset('img2/icono.png')}}">
                         <h5 class="mb-0 mt-4">Experiencia</h5>
                         <p>Este es el dominio más difícil de evaluar y es el más buscado. Visto que se ha desempeñado durante varios años alguna actividad. Estas certificaciones también existen, se utilizan más en el campo de las habilidades como negocios, o en tecnologías.</p>
                     </div>
@@ -316,21 +318,21 @@
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="blog-post card-effect">
-                        <img src="img/blog1.jpg" alt="">
+                        <img src="{{asset('img2/blog1.jpg')}}">
                         <h5 class="mt-4"><a href="#">Credencial de nivel</a></h5>
                         <p>Que valida las habilidades y el conocimiento fundamental de diferentes tecnologías y/o habilidades blandas. </p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="blog-post card-effect">
-                        <img src="img/blog2.jpg" alt="">
+                        <img src="{{asset('img2/blog2.jpg')}}">
                         <h5 class="mt-4"><a href="#">Valida y aprende </a></h5>
                         <p>Ideal para estudiantes o profesionales que necesitan aumentar sus posibilidades laborales en una carrera en tecnología.y/o habilidades blandas.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="blog-post card-effect">
-                        <img src="img/blog3.jpg" alt="">
+                        <img src="{{asset('img2/blog3.jpg')}}">
                         <h5 class="mt-4"><a href="#">Aprende cosas nuevas</a></h5>
                         <p>Aborda una amplia gama de certificaciones en diversas áreas, Tecnología , educación,  empleabilidad entre otros</p>
                     </div>
@@ -378,7 +380,7 @@
             <div class="container">
                 <div class="row gy-4">
                     <div class="col-lg-4">
-                        <img class="logo" src="img/logo_banco.png" alt="">
+                        <img class="logo" src="{{asset('img2/logo_banco.png')}}">
                     </div>
                     <div class="col-lg-2">
                         <h5 class="text-white">Brand</h5>
