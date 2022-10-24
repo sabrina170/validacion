@@ -23,7 +23,8 @@
                     <th class="whitespace-nowrap">ID</th>
                     <th class="whitespace-nowrap">Usuario</th>
                     <th class="text-center whitespace-nowrap">Contraseña</th>
-                    <th class="text-center whitespace-nowrap">Id estudiante</th>
+                    <th class="text-center whitespace-nowrap">Estudiante</th>
+                    <th class="text-center whitespace-nowrap">Modificado</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
             </thead>
@@ -34,8 +35,22 @@
                     <td>
                         <a href="" class="font-medium whitespace-nowrap">{{ $user->email}}</a>
                     </td>
-                    <td class="text-center">{{  $user->password}}</td>
-                    <td class="text-center"></td>
+                    <td class="text-center">{{ $user->password}}</td>
+                    <td class="text-center">{{ $user->nombres}} {{ $user->apellidos}}</td>
+                    <td class="text-center">
+
+                        @if ($user->tipo_mod==1)
+                       
+                        <div class="bg-success/20 text-success rounded px-2 mt-1.5">
+                         <strong>Registrado</strong> por <strong>{{$user->mod_user}}</strong>
+                        </div>
+                        @elseif ($user->tipo_mod==2)
+                        <div class="bg-success/20 text-success rounded px-2 mt-1.5">
+                           <strong>Actualizado</strong> por <strong>{{$user->mod_user}}</strong>
+                        </div>
+                        @endif
+                    </td>
+
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
                             <a class="flex items-center mr-3" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
@@ -55,4 +70,8 @@
 </div>
 
 <!-- END: Profile Info -->
+@endsection
+
+@section('js')
+    
 @endsection

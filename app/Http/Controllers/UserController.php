@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alumno;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -17,8 +18,15 @@ class UserController extends Controller
 
     public function index()
     {
-        $users  = User::orderByDesc('id')->get();
-        return view('usuarios.index', compact('users'));
+        // $users  = User::orderByDesc('id')->get();
+
+        $users = User::join("alumnos", "alumnos.id", "=", "users.id_estudiante")
+            ->select("users.id", "name", "email", "password", "nombres", "apellidos", "users.mod_user", "users.tipo_mod")
+            ->get();
+
+        $alumnos  = Alumno::orderByDesc('id')->get();
+
+        return view('usuarios.index', compact('users', 'alumnos'));
     }
 
     public function register(Request $request)
@@ -29,6 +37,10 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->id_estudiante = $request->id_estudiante;
+        $user->mod_user = $request->mod_user;
+        $user->tipo_mod = $request->tipo_mod;
+
         // $user->estado = '1';
         // $user->ku = date("Ymd-His");
         // $user->tipo = 1;
@@ -77,5 +89,4 @@ class UserController extends Controller
         $nombre = $user->nombres;
         return redirect()->route('usuarios.index');
     }
-
 }

@@ -64,6 +64,10 @@
                         <input id="modal-form-2" type="file" class="form-control form-control-rounded"
                           name="image">
                     </div>
+                    <div class="col-span-12 sm:col-span-6">
+                    <input id="modal-form-2" type="hidden" value="{{Auth::user()->name}}" name="mod_user">
+                    <input id="modal-form-2" type="hidden" value="1" name="tipo_mod">
+                </div>
 
                 </div> <!-- END: Modal Body -->
 
