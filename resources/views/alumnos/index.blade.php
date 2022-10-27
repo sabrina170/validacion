@@ -12,22 +12,29 @@
     <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
         <a class="btn btn-primary shadow-md mr-2" data-tw-toggle="modal" 
         data-tw-target="#large-modal-size-preview">Crear nuevo Alumno</a>
-       
-       
+     
     </div>
+
+    @if (Session::has('message'))
+    <div class="alert alert-success-soft show flex items-center mb-2" role="alert">
+         <i data-lucide="alert-triangle" class="w-6 h-6 mr-2"></i> {{ Session::has('message')}} </div>
+    @endif
+    
     <!-- BEGIN: Data List -->
     <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+        <div class="overflow-x-auto">
         <table class="table table-report -mt-2">
             <thead>
                 <tr>
-                    <th class="whitespace-nowrap">ID</th>
+                    {{-- <th class="whitespace-nowrap">ID</th> --}}
+                    <th class="text-center whitespace-nowrap">Foto Perfil</th>
                     <th class="whitespace-nowrap">Nombres</th>
                     <th class="text-center whitespace-nowrap">Apellidos</th>
                     <th class="text-center whitespace-nowrap">DNI</th>
                     <th class="text-center whitespace-nowrap">Cod. Certificado</th>
                     <th class="text-center whitespace-nowrap">Inicio Clases</th>
                     <th class="text-center whitespace-nowrap">Fin Clases</th>
-                    <th class="text-center whitespace-nowrap">Foto Certificado</th>
+                    {{-- <th class="text-center whitespace-nowrap">Fotos Certificado</th> --}}
                     <th class="text-center whitespace-nowrap">Cod. Curso</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
@@ -35,15 +42,7 @@
             <tbody>
                 @foreach($alumnos as $alum)
                 <tr class="intro-x">
-                    <td>{{$alum->id}}</td>
-                    <td>
-                        <a href="" class="font-medium whitespace-nowrap">{{ $alum->nombres}}</a> 
-                    </td>
-                    <td class="text-center">{{ $alum->apellidos}}</td>
-                    <td class="text-center">{{ $alum->dni}}</td>
-                    <td class="text-center">{{ $alum->codigo_cer}}</td>
-                    <td class="text-center">{{ $alum->inicio}}</td>
-                    <td class="text-center">{{ $alum->final}}</td>
+                    {{-- <td>{{$alum->id}}</td> --}}
                     <td class="w-40">
                         <div class="flex">
                             <div class="w-10 h-10 image-fit zoom-in">
@@ -52,10 +51,26 @@
                             </div> 
                         </div>
                     </td>
+                    <td>
+                        <a href="" class="font-medium whitespace-nowrap">{{ $alum->nombres}}</a> 
+                    </td>
+                    <td class="text-center">{{ $alum->apellidos}}</td>
+                    <td class="text-center">{{ $alum->dni}}</td>
+                    <td class="text-center">{{ $alum->codigo_cer}}</td>
+                    <td class="text-center">{{ $alum->inicio}}</td>
+                    <td class="text-center">{{ $alum->final}}</td>
+                
                     <td class="text-center">{{ $alum->codigo_cur}}</td>
                     <td class="table-report__action w-56">
-                        <div class="flex justify-center items-center">
-                            <a class="flex items-center mr-3" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
+                        <div class="flex items-center ">
+                            <a class="flex items-center text-success mr-3"
+                             href="{{route('alumnos.detalles',$alum->id)}}">
+                             <i data-lucide="eyes-2" class="w-4 h-4 mr-1"></i> Detalles </a>
+
+                            <a class="flex items-center mr-3" 
+                            href="{{route('alumnos.edit',$alum->id)}}">
+                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
+
                             <a class="flex items-center text-danger" data-tw-toggle="modal"
                              data-tw-target="#delete-confirmation-modal{{$alum->id}}">
                               <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
@@ -63,10 +78,12 @@
                     </td>
                 </tr>
                 @include("alumnos.modal-eli")
+
                 @endforeach
                 
             </tbody>
         </table>
+        </div>
     </div>
     <!-- END: Data List -->
 </div>

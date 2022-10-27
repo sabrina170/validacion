@@ -1,0 +1,12 @@
+body {
+    background: url("http://falconmasters.com/demos/particulas/bg.jpg") no-repeat #000;
+    background-size: cover;
+  }
+
+  .contenedor {
+    position: relative;
+    position: absolute;
+    top: 20%;
+    left: 38%;
+    margin: -25px 0 0 -25px;
+  }

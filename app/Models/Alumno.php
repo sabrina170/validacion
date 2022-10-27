@@ -20,4 +20,10 @@ class Alumno extends Model
         'mod_user',
         'tipo_mod'
     ];
+
+
+    public function alumnoImages()
+    {
+        return $this->hasMany(AlumnoImage::class, 'alumno_id', 'id');
+    }
 }

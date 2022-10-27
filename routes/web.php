@@ -45,6 +45,9 @@ Route::post('/createalum', [AlumnoController::class, "store"])->name('crearalumn
 Route::post('/buscaralumno', [AlumnoController::class, "buscar"])->name('buscaralumno');
 
 Route::delete('alumno/{alumno}/eliminar', [AlumnoController::class, "destroy"])->name('alumno.delete');
+Route::get('detalles-alum/{alum}', [AlumnoController::class, "detalles"])->name('alumnos.detalles');
+Route::get('actualizar-alum/{alum}', [AlumnoController::class, "edit"])->name('alumnos.edit');
+Route::put('actualizar/{alumno}', [AlumnoController::class, "update"])->name('editaralumno');
 
 // USUARIOS
 Route::get('/usuarios', [UserController::class, "index"])->name('usuarios.index');

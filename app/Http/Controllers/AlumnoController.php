@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AlumnoRequest;
 use App\Models\Alumno;
+use App\Models\AlumnoImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Psy\Readline\Hoa\Console;
@@ -36,30 +38,11 @@ class AlumnoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AlumnoRequest $request)
     {
+        $input = $request->validated();
 
-        // 'nombres',
-        // 'apellidos',
-        // 'dni',
-        // 'codigo_cer',
-        // 'inicio',
-        // 'final',
-        // 'image',
-        // 'codigo_cur'
-        // $request->validate([
-        //     'nombres' => 'required',
-        //     'apellidos' => 'required',
-        //     'dni' =>  'required',
-        //     'codigo_cer' => 'required',
-        //     'inicio' => 'required',
-        //     'final' => 'required',
-        //     'codigo_cur' => 'required',
-        //     'image' => 'required|image|mimes:jpeg,png,jpg'
-        // ]);
-
-        $input = $request->all();
-
+        // Foto Perfil
         if ($image = $request->file('image')) {
             $destinatarioPath = 'images-cer/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -68,9 +51,28 @@ class AlumnoController extends Controller
         }
 
         // dd($request);
-        Alumno::create($input);
+        $alumno = Alumno::create($input);
 
-        return redirect()->route('alumnos.index')->with('succes' . 'alumnos creado exitosamente');
+        // return $alumno->id;
+        // GALERIA DE IMAGENES    
+        if ($request->hasfile('images')) {
+            $uploadPath = 'images-cer/';
+
+            $i = 1;
+            foreach ($request->file('images') as $imagefile) {
+                $exten = $imagefile->getClientOriginalExtension();
+                $filename = time() . $i++ . "." . $exten;
+                $imagefile->move($uploadPath, $filename);
+                $finalImagePathName = $uploadPath . $filename;
+                // $input['image'] = "$profileImage";
+
+                $alumno->alumnoImages()->create([
+                    'product_id' => $alumno->id,
+                    'image' => $finalImagePathName,
+                ]);
+            }
+        }
+        return redirect()->route('alumnos.index')->with('message' . 'alumnos creado exitosamente');
     }
 
     /**
@@ -90,9 +92,11 @@ class AlumnoController extends Controller
      * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alumno $alumno)
+    public function edit(Alumno $alumno, $alum)
     {
-        //
+        $alumnos  = Alumno::orderByDesc('id')->where('id', $alum)->get();
+
+        return view('alumnos.edit', compact('alumnos'));
     }
 
     /**
@@ -102,9 +106,50 @@ class AlumnoController extends Controller
      * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alumno $alumno)
+    public function update(AlumnoRequest $request, Alumno $alumno)
     {
-        //
+        $alu = $request->validated();
+
+        // $alumno->update([
+        //     'nombres' => $validar['nombres'],
+        //     'apellidos' => $validar['apellidos'],
+        //     'dni' => $validar['dni'],
+        //     'codigo_cer' => $validar['codigo_cer'],
+        //     'inicio' => $validar['inicio'],
+        //     'final' => $validar['final'],
+        //     'codigo_cur' => $validar['codigo_cur'],
+        //     'mod_user' => $validar['mod_user'],
+        //     'tipo_mod' => $validar['tipo_mod']
+        // ]);
+        // Foto Perfil
+        if ($image = $request->file('image')) {
+            $destinatarioPath = 'images-cer/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinatarioPath, $profileImage);
+            $alu['image'] = "$profileImage";
+        }
+
+        $alumno->update($alu);
+        // GALERIA DE IMAGENES    
+        if ($request->hasfile('images')) {
+            $uploadPath = 'images-cer/';
+
+            $i = 1;
+            foreach ($request->file('images') as $imagefile) {
+                $exten = $imagefile->getClientOriginalExtension();
+                $filename = time() . $i++ . "." . $exten;
+                $imagefile->move($uploadPath, $filename);
+                $finalImagePathName = $uploadPath . $filename;
+                // $input['image'] = "$profileImage";
+
+                $alumno->alumnoImages()->create([
+                    'product_id' => $alumno->id,
+                    'image' => $finalImagePathName,
+                ]);
+            }
+        }
+
+        return redirect()->route('alumnos.index')->with('message' . 'alumnos actualizado exitosamente');
     }
 
     /**
@@ -122,28 +167,23 @@ class AlumnoController extends Controller
 
     public function buscar(Request $request)
     {
-        // $alumno->delete();
-        // $nombre = $alumno->nombres;
-        // return redirect()->route('alumnos.index');
-        // dd($request);
-        // $dni = $request->dni;
-        // $certificado = DB::table('alumnos')
-        //     ->select('id', 'nombres', 'image')
-        //     ->where('id', $dni);
-
         $dni = $request->dni;
         $cod = $request->cod;
+        if (isset($dni) && isset($cod)) {
+            $dni = $request->dni;
+            $cod = $request->codigo_cer;
+            $filterResult = Alumno::where('dni', '=', $dni)->get();
+            //     ->orwhere('codigo_cer', '=',  $cod)->get();
+            // $user = User::where('email', '=', $request->email)->first();
+            // $usuario = Alumno::findOrFail($filterResult->id);
 
+            // $id_user = $filterResult->nombres;
 
-       if(isset($dni) && isset($cod)){
-        $dni = $request->dni;
-        $cod = $request->codigo_cer;
-        $filterResult = Alumno::where('dni', 'LIKE', '%' . $dni . '%')->orWhere('codigo_cer', 'LIKE', '%' . $cod . '%')->get();
-        return view('validacion', compact('dni', 'filterResult'));
-       }
-       else{
-        return view('validacion');
-       }
+            // $certificados = AlumnoImage::where('alumno_id', '=', $id_user);
+            return view('validacion', compact('dni', 'filterResult'));
+        } else {
+            return view('validacion');
+        }
 
         // return response()->json($filterResult);
 
@@ -154,5 +194,14 @@ class AlumnoController extends Controller
         // $certificados  = Alumno::orderByDesc('id')->get();
 
         // return redirect()->route('validacion');
+    }
+
+    public function detalles(Request $request, $alum)
+    {
+        $alumnos  = Alumno::orderByDesc('id')->where('id', $alum)->get();
+        $certificados  = AlumnoImage::orderByDesc('id')->where('alumno_id', $alum)->get();
+
+        return view('alumnos.detalles', compact('alumnos', 'certificados'));
+        // DB::table('users')->where('ku', $ku)
     }
 }

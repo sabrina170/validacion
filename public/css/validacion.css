@@ -1,0 +1,35 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+.caja{
+    display: table-cell;
+    width: 50vw;
+    padding-right: 30px; 
+    padding-left: 30px; 
+    text-align: justify;
+}
+h1 {
+    text-align: center;
+    padding: 30px; 
+    color: #059;
+}
+.cuadro{
+	width: 18vw;
+	padding: 5px;
+	margin-top: 10px; 
+	outline: 1px solid blue;
+}
+.guion{
+	width: 2%;
+	display: inline;
+}
+.btn{
+	margin-top: 10px;
+	padding: 15px;
+	background: #059;
+	color:white;
+	border: 0px;
+}	
+	
