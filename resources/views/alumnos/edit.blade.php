@@ -81,7 +81,7 @@
                     <div class="h-32 px-2">
                         <div class="h-full bg-slate-100 dark:bg-darkmode-400 rounded-md">
                             <img src="/{{$img->image}}" />
-                            <a href="{{}}">Eliminar</a>
+                            {{-- <a href="{{}}">Eliminar</a> --}}
                         </div>
                     </div>
                     @endforeach
