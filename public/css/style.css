@@ -54,7 +54,7 @@ img {
 }
 
 .hero {
-    background-image: url(../images/cove2.jpg);
+    background-image: url(../img2/cove2.jpg);
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -140,7 +140,7 @@ section {
 }
 
 .col-img {
-    background-image: url(../images/chica.jpg);
+    background-image: url(../img2/chica.jpg);
     background-position: center;
     background-size: cover;
     min-height: 500px;
