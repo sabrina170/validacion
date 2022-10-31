@@ -128,7 +128,7 @@ class AlumnoController extends Controller
             $image->move($destinatarioPath, $profileImage);
             $alu['image'] = "$profileImage";
         }
-
+        $alu['tipo_mod'] = 2;
         $alumno->update($alu);
         // GALERIA DE IMAGENES    
         if ($request->hasfile('images')) {
@@ -170,19 +170,31 @@ class AlumnoController extends Controller
         $dni = $request->dni;
         $cod = $request->cod;
         if (isset($dni) && isset($cod)) {
-            $dni = $request->dni;
-            $cod = $request->codigo_cer;
-            $filterResult = Alumno::where('dni', '=', $dni)->get();
-            //     ->orwhere('codigo_cer', '=',  $cod)->get();
-            // $user = User::where('email', '=', $request->email)->first();
-            // $usuario = Alumno::findOrFail($filterResult->id);
+            $show = 'show';
+            // $filterResult = Alumno::where('dni', '=', $dni)->get();
 
-            // $id_user = $filterResult->nombres;
+            $filterResult = Alumno::where('dni', '=', $dni)
+                ->where('codigo_cer', '=', $cod)
+                ->get();
 
-            // $certificados = AlumnoImage::where('alumno_id', '=', $id_user);
-            return view('validacion', compact('dni', 'filterResult'));
+            if (count($filterResult) <= 0) {
+                $message = 'No hay resultado';
+                return view('validacion', compact('message'));
+            } else {
+
+                return view('validacion', compact('dni', 'filterResult', 'show'));
+            }
+            // dd($filterResult);
+
+        } else if (isset($dni)) {
+            $message = 'Ingresa el Codigo del Certificado';
+            return view('validacion', compact('message'));
+        } else if (isset($cod)) {
+            $message = 'Ingresa el DNI';
+            return view('validacion', compact('message'));
         } else {
-            return view('validacion');
+            $message = 'Ingresa un DNI y Codigo del Certificad';
+            return view('validacion', compact('message'));
         }
 
         // return response()->json($filterResult);
