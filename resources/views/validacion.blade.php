@@ -73,11 +73,23 @@
                         </div>
 
                 </div>
-            </div>
+
             <div class="row mb-5 mt-4">
                 <div class="col-md-10 mx-auto text-center">
                     <button class="btn btn-primary" type="submit">Buscar Certificado</button>
                 </div>
+            </div>
+
+            @if (isset($dni))
+            {{-- {{$dni}} --}}
+            @endif
+            @if (isset($filterResult))
+            @foreach($filterResult as $cer)
+            Alumno:   <h5>{{$cer->nombres}} {{$cer->apellidos}}</h5>
+            <img class="" src="/images-cer/{{$cer->image}}" title="Certificado">
+
+@endforeach
+@endif
             </div>
         </form>
         </div>
@@ -88,22 +100,13 @@
                     <div class="col-md-10 offset-md-1">
                         <h2>Donde ubicar tu codigo</h2>
 
-@if (isset($dni))
-{{-- {{$dni}} --}}
-@endif
-@if (isset($filterResult))
-                         @foreach($filterResult as $cer)
-                         Alumno:   <h5>{{$cer->nombres}} {{$cer->apellidos}}</h5>
-                            <img class="" src="/images-cer/{{$cer->image}}" title="Certificado">
-
-@endforeach
-@endif
                     </div>
                 </div>
-                <div class="col-img2 mt-1"></div>
+                <img class="img-fluid" src="{{asset('img2/codigo.png')}}" alt="" srcset="">
             </div>
         </div>
-    </section><!-- VALOR DE CERTIFICACION -->
+    </section>
+
     <footer>
         <div class="footer-top mt-2">
             <div class="container">
@@ -159,6 +162,6 @@
 
 
 
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 </body>
 </html>

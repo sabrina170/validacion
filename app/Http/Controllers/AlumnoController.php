@@ -134,12 +134,12 @@ class AlumnoController extends Controller
         $dni = $request->dni;
         $cod = $request->cod;
 
-
+        $mshow= 'show';
        if(isset($dni) && isset($cod)){
-        $dni = $request->dni;
-        $cod = $request->codigo_cer;
-        $filterResult = Alumno::where('dni', 'LIKE', '%' . $dni . '%')->orWhere('codigo_cer', 'LIKE', '%' . $cod . '%')->get();
-        return view('validacion', compact('dni', 'filterResult'));
+        // $dni = $request->dni;
+        // $cod = $request->codigo_cer;
+        $filterResult = Alumno::where('dni', $dni)->orWhere('codigo_cer',  $cod )->get();
+        return view('validacion', compact('dni', 'filterResult','mshow'));
        }
        else{
         return view('validacion');
