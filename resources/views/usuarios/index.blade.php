@@ -22,7 +22,7 @@
                 <tr>
                     <th class="whitespace-nowrap">ID</th>
                     <th class="whitespace-nowrap">Usuario</th>
-                    <th class="text-center whitespace-nowrap">Contraseña</th>
+                    {{-- <th class="text-center whitespace-nowrap">Contraseña</th> --}}
                     <th class="text-center whitespace-nowrap">Estudiante</th>
                     <th class="text-center whitespace-nowrap">Modificado</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
@@ -35,12 +35,12 @@
                     <td>
                         <a href="" class="font-medium whitespace-nowrap">{{ $user->email}}</a>
                     </td>
-                    <td class="text-center">{{ $user->password}}</td>
+                    {{-- <td class="text-center">{{$user->password}}</td> --}}
                     <td class="text-center">{{ $user->nombres}} {{ $user->apellidos}}</td>
                     <td class="text-center">
 
                         @if ($user->tipo_mod==1)
-                       
+
                         <div class="bg-success/20 text-success rounded px-2 mt-1.5">
                          <strong>Registrado</strong> por <strong>{{$user->mod_user}}</strong>
                         </div>
@@ -73,5 +73,5 @@
 @endsection
 
 @section('js')
-    
+
 @endsection
