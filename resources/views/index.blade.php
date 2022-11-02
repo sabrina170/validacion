@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="{{asset('css2/style.css')}}">
     <link rel="stylesheet" href="{{asset('css2/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 
 
@@ -71,8 +72,8 @@
                         <div class="iconbox">
                             <i class='bx bxs-check-shield'></i>
                         </div>
-                        <h5 class="mt-4 mb-2">Service</h5>
-                        <p>Es tendencia. El número de personas que obtienen una certificación
+                        <h5 class="mt-4 mb-2">Es tendencia</h5>
+                        <p>El número de personas que obtienen una certificación
                             crece cada día, pero también las certificaciones, y en todos los campos.
                             Lo que un día fue una herramienta para los fabricantes de tecnología
                             (todo tipo de tecnología), hoy es un estándar para validar conocimientos
@@ -84,9 +85,8 @@
                         <div class="iconbox">
                             <i class='bx bxs-comment-detail'></i>
                         </div>
-                        <h5 class="mt-4 mb-2">Service</h5>
-                        <p>Las certificaciones son una manera fiable y contrastada de probar
-                            o confirmar los conocimientos que tiene una persona sobre una cierta materia.
+                        <h5 class="mt-4 mb-2">Fiable y Constraste</h5>
+                        <p>Los conocimientos que tiene una persona sobre una cierta materia.
                             Son herramientas aceptadas en todo el mundo y en diferentes ámbitos, desde el
                             estudiantil hasta el profesional.</p>
                     </div>
@@ -96,8 +96,8 @@
                         <div class="iconbox">
                             <i class='bx bxs-cog'></i>
                         </div>
-                        <h5 class="mt-4 mb-2">Service</h5>
-                        <p>De hecho, algunos certificados facilitan el desarrollo de determinadas actividades profesionales.
+                        <h5 class="mt-4 mb-2">Facilitan el Desarrollo</h5>
+                        <p>De determinadas actividades profesionales.
                             O, visto de otro modo, no disponer de ciertos certificados nos impide desarrollar
                              determinadas actividades. </p>
                     </div>
@@ -107,8 +107,8 @@
                         <div class="iconbox">
                             <i class='bx bxs-heart'></i>
                         </div>
-                        <h5 class="mt-4 mb-2">Service</h5>
-                        <p>Una certificación es una herramienta para medir el conocimiento de un profesional.
+                        <h5 class="mt-4 mb-2">Es una Herramienta</h5>
+                        <p>Para medir el conocimiento de un profesional.
                             Mi mejor ejemplo es el brevete de conducir, que en realidad se puede decir que es una certificación,
                             pues valida que una persona ha seguido un proceso para validarle como conductor. </p>
                     </div>
@@ -118,9 +118,8 @@
                         <div class="iconbox">
                             <i class='bx bxs-rocket'></i>
                         </div>
-                        <h5 class="mt-4 mb-2">Service</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil perspiciatis illo asperiores
-                            perferendis </p>
+                        <h5 class="mt-4 mb-2">Es un Aprendizaje</h5>
+                        <p>Que refuerza tus conocimientos previos o ayuda a conocer nuevos metodos y aplicaciones para mejorar tu rendimiento ante un trabajo </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
@@ -128,9 +127,8 @@
                         <div class="iconbox">
                             <i class='bx bxs-doughnut-chart'></i>
                         </div>
-                        <h5 class="mt-4 mb-2">Service</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil perspiciatis illo asperiores
-                            perferendis </p>
+                        <h5 class="mt-4 mb-2">Mejora de Capacidades</h5>
+                        <p>Ayuda al reforzamiento de habilidades, conocimientos y especializacion ante uno o varios problemas, el cual la certificacion te ayudara a estar preparado para la solucion de problemas</p>
                     </div>
                 </div>
             </div>
@@ -154,7 +152,7 @@
                             </div>
                             <div>
                                 <h5>Consolidar habilidades</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil perspiciatis illo </p>
+                                <p>Ayuda a fidelizar tus habilidades y consolidar lo aprendido con la practica. </p>
                             </div>
                         </div>
                         <div class="feature d-flex">
@@ -163,7 +161,7 @@
                             </div>
                             <div>
                                 <h5>Tener más oportunidades laborales</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil perspiciatis illo </p>
+                                <p>Las certificaciones ayudan a que destaque ante una oportunidad laboral. </p>
                             </div>
                         </div>
                         <div class="feature d-flex">
@@ -172,7 +170,7 @@
                             </div>
                             <div>
                                 <h5>Ser productivo</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil perspiciatis illo </p>
+                                <p>Ayuda en la resolucion de problemas y en la facil comprension de nuevos temas. </p>
                             </div>
                         </div>
                         <div class="feature d-flex">
@@ -181,7 +179,7 @@
                             </div>
                             <div>
                                 <h5>Obtener reconocimiento</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil perspiciatis illo </p>
+                                <p>Logrando destacar con tus habilidades aprendidas y aplicando lo aprendido. </p>
                             </div>
                         </div>
 
@@ -383,15 +381,15 @@
                         <img class="logo" src="{{asset('img2/logo_banco.png')}}">
                     </div>
                     <div class="col-lg-2">
-                        <h5 class="text-white">Brand</h5>
+                        <h5 class="text-white">INDICE</h5>
                         <ul class="list-unstyled">
-                            <li><a href="#">incio</a></li>
-                            <li><a href="#">Consulta de Codigo</a></li>
-                            <li><a href="#">Inicio de Sesion</a></li>
+                            <li><a href="{{route('index')}}">Incio</a></li>
+                            <li><a href="{{route('validacion')}}">Consulta de Codigo</a></li>
+                            <li><a href="{{route('login')}}">Inicio de Sesion</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-2">
-                        <h5 class="text-white">More</h5>
+                        <h5 class="text-white">MAS..</h5>
                         <ul class="list-unstyled">
                             <li><a href="#">FAQ's</a></li>
                             <li><a href="#">Privacy & Policy</a></li>
@@ -400,7 +398,7 @@
                         </ul>
                     </div>
                     <div class="col-lg-4">
-                        <h5 class="text-white">Contactanos</h5>
+                        <h5 class="text-white">CONTACTANOS</h5>
                         <ul class="list-unstyled">
                             <li>Direccion: Jr. Omar Yali N°371</li>
                             <li>Correo: Informes@iibs.edu.pe</li>

@@ -24,26 +24,6 @@ Route::get('/', function () {
 Route::get('/index', [IndexController::class, 'index']);
 
 
-// Route::get('/index', function () {
-//     return view('index');
-// });
-
-// Route::get('/validacion', function () {
-//     return view('validacion');
-// });
-
-// Route::get('/admin', function () {
-//     return view('usuarios');
-// });
-
-// Route::get('/certificado', function () {
-//     return view('certificados');
-// });
-
-// Route::get('/login', function () {
-//     return view('login');
-// });
-
 // Vistas
 Route::view('/index', "index")->name('index');
 Route::view('/login', "login")->name('login');
@@ -52,7 +32,7 @@ Route::view('/usuarios', "usuarios")->name('usuarios');
 Route::view('/register', "register")->name('register');
 
 // Login y registro
-Route::post('/validar-registro', [UserController::class, 'register'])->name('validar-registro');
+
 Route::post('/inicia-sesion', [UserController::class, 'login'])->name('inicia-sesion');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
@@ -65,9 +45,13 @@ Route::post('/createalum', [AlumnoController::class, "store"])->name('crearalumn
 Route::post('/buscaralumno', [AlumnoController::class, "buscar"])->name('buscaralumno');
 
 Route::delete('alumno/{alumno}/eliminar', [AlumnoController::class, "destroy"])->name('alumno.delete');
+Route::get('detalles-alum/{alum}', [AlumnoController::class, "detalles"])->name('alumnos.detalles');
+Route::get('actualizar-alum/{alum}', [AlumnoController::class, "edit"])->name('alumnos.edit');
+Route::put('actualizar/{alumno}', [AlumnoController::class, "update"])->name('editaralumno');
 
 // USUARIOS
 Route::get('/usuarios', [UserController::class, "index"])->name('usuarios.index');
+Route::post('/validar-registro', [UserController::class, 'register'])->name('validar-registro');
 Route::delete('usuario/{user}/eliminar', [UserController::class, "destroy"])->name('usuario.delete');
 
 

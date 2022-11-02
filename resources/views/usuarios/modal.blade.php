@@ -38,6 +38,24 @@
                         <input id="modal-form-1" type="text" class="form-control form-control-rounded"
                         placeholder="**********" name="Password">
                      </div>
+                     <div class="col-span-12 sm:col-span-12">
+                         <!-- BEGIN: Basic Select --> <div>
+                             <label>Alumno</label>
+                              <div class="mt-2"> 
+                               
+                                <select data-placeholder="Selecciona un alumno"
+                                 class="tom-select w-full" name="id_estudiante">
+                                    <option selected>Busca al alumno</option>
+                                    @foreach($alumnos as $alum)
+                                    <option value="{{$alum->id}}">{{$alum->dni}} -  {{$alum->nombres}} {{$alum->apellidos}}</option> 
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div> <!-- END: Basic Select --> 
+                        <input type="hidden" name="mod_user" value="{{Auth::user()->name}}">
+                        <input type="hidden" name="tipo_mod" value="1">
+
+                     </div>
                 </div> <!-- END: Modal Body -->
 
                 <div class="modal-footer">
@@ -45,7 +63,6 @@
                      w-20 mr-1">Cancel</button>
                      <button type="submit" class="btn btn-primary w-20">Crear</button>
                    </div> <!-- END: Modal Footer -->
-
         </form>
         </div>
     </div>

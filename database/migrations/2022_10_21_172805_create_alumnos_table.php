@@ -23,6 +23,8 @@ class CreateAlumnosTable extends Migration
             $table->date('final');
             $table->string('image');
             $table->string('codigo_cur');
+            $table->string('mod_user');
+            $table->integer('tipo_mod');
             $table->timestamps();
         });
     }

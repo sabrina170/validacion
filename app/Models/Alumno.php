@@ -16,6 +16,14 @@ class Alumno extends Model
         'inicio',
         'final',
         'image',
-        'codigo_cur'
+        'codigo_cur',
+        'mod_user',
+        'tipo_mod'
     ];
+
+
+    public function alumnoImages()
+    {
+        return $this->hasMany(AlumnoImage::class, 'alumno_id', 'id');
+    }
 }
