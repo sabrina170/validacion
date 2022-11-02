@@ -66,16 +66,27 @@
                           
                          <div class="form-group col-md-6 mb-3">
                             <label for="inputPassword2" class="sr-only">Ingrese DNI</label>
-                            <input type="text" class="form-control" id="inputPassword2" placeholder="Ingrese DNI">
+                            <input type="text" name="dni" class="form-control" id="inputPassword2"  placeholder="Ingrese DNI">
                           </div>
 
                           <div class="form-group col-md-6 mb-3">
                             <label for="inputPassword2" class="sr-only">Ingrese su CODIGO</label>
-                            <input type="text" class="form-control" id="inputPassword2" placeholder="Ingrese CODIGO">
+                            <input type="text" name="cod" class="form-control" id="inputPassword2" placeholder="Ingrese CODIGO">
                           </div>
 
                         </div>
-
+                       
+                            @if (isset($message))
+                            <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                            <strong>{{$message}}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            @else
+                            @endif
+                           
+                          
                 </div>
             </div>
             <div class="row mb-5 mt-4">
@@ -93,65 +104,59 @@
                         <h2>Donde ubicar tu codigo</h2>
 
 @if (isset($dni))
-{{-- {{$dni}} --}}
+{{$dni}}
 @endif
-@if (isset($filterResult))
-                         @foreach($filterResult as $cer)
-                         Alumno:   <h5>{{$cer->nombres}} {{$cer->id}}</h5>
-                            <img class="" src="/images-cer/{{$cer->image}}" title="Certificado">
-@endforeach
-@foreach ($cer->alumnoImages as $img)
-<div class="h-32 px-2">
-    <div class="h-full bg-slate-100 dark:bg-darkmode-400 rounded-md">
-        <img src="/{{$img->image}}" />
-       {{ $img->id}}
-    </div>
-</div>
-@endforeach
-@endif
+                   
                     </div>
                 </div>
                 <div class="col-img2 mt-1"></div>
             </div>
         </div>
-    </section><!-- VALOR DE CERTIFICACION -->
+    </section>
+    
+    <!-- VALOR DE CERTIFICACION -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Certificado</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        @if (isset($filterResult))
+                         @foreach($filterResult as $cer)
+                          <h5> Alumno: {{$cer->nombres}} {{$cer->apellidos}}</h5>
+                            {{-- <img class="" src="/images-cer/{{$cer->image}}" title="Certificado"> --}}
+                        @endforeach
+                        {{-- @foreach ($cer->alumnoImages as $img)
+                        <div class="h-32 px-2">
+                            <div class="h-full bg-slate-100 dark:bg-darkmode-400 rounded-md">
+                                <img src="/{{$img->image}}" />
+                            {{ $img->id}}
+                            </div>
+                        </div>
+                        @endforeach --}}
+                    
+                                @foreach ($cer->alumnoImages as $img)
+                                {{-- {{$img->id}} --}}
+                            
+                                <img src="/{{$img->image}}" class="img-fluid" alt="...">
+                          
+                              @endforeach
+                            
+        @endif
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger">Descargar</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog" id="waitDialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                   Some Stuff. 
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
-                </div>
-            </div>
-            </div>
-        </div>  
+
     
     
     <footer>
@@ -215,11 +220,20 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+   <script>$('.carousel').carousel()</script>
+    @if (isset($show))
+    {{-- {{ $sw=$show}} --}}
     <script>
-      $(document).ready(function(){
-        $('#exampleModal').modal('show');
-      })
-
-    </script>
+        $(document).ready(function(){
+          $('#exampleModal').modal('show');
+        })
+      </script>
+@else
+<script>
+    $(document).ready(function(){
+      $('#exampleModal').modal('');
+    })
+  </script>
+@endif
 </body>
 </html>

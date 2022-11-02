@@ -34,7 +34,7 @@
                     <th class="text-center whitespace-nowrap">Cod. Certificado</th>
                     <th class="text-center whitespace-nowrap">Inicio Clases</th>
                     <th class="text-center whitespace-nowrap">Fin Clases</th>
-                    {{-- <th class="text-center whitespace-nowrap">Fotos Certificado</th> --}}
+                    <th class="text-center whitespace-nowrap">Modificado</th>
                     <th class="text-center whitespace-nowrap">Cod. Curso</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
@@ -59,7 +59,17 @@
                     <td class="text-center">{{ $alum->codigo_cer}}</td>
                     <td class="text-center">{{ $alum->inicio}}</td>
                     <td class="text-center">{{ $alum->final}}</td>
-                
+                <td>
+                    @if ($alum->tipo_mod==1)
+                   
+                    <div class="bg-success/20 text-success rounded px-2 mt-1.5">
+                     <strong>Registrado</strong> por <strong>{{$alum->mod_user}}</strong>
+                    </div>
+                    @elseif ($alum->tipo_mod==2)
+                    <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">
+                       <strong>Actualizado</strong> por <strong>{{$alum->mod_user}}</strong>
+                    </div>
+                    @endif</td>
                     <td class="text-center">{{ $alum->codigo_cur}}</td>
                     <td class="table-report__action w-56">
                         <div class="flex items-center ">
