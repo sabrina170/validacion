@@ -17,12 +17,14 @@
     </div>
     <!-- BEGIN: Data List -->
     <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+        <div class="overflow-x-auto">
         <table class="table table-report -mt-2">
             <thead>
                 <tr>
                     <th class="whitespace-nowrap">ID</th>
                     <th class="whitespace-nowrap">Usuario</th>
                     {{-- <th class="text-center whitespace-nowrap">Contraseña</th> --}}
+                    <th class="text-center whitespace-nowrap">Contraseña</th>
                     <th class="text-center whitespace-nowrap">Estudiante</th>
                     <th class="text-center whitespace-nowrap">Modificado</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
@@ -35,7 +37,9 @@
                     <td>
                         <a href="" class="font-medium whitespace-nowrap">{{ $user->email}}</a>
                     </td>
-                    {{-- <td class="text-center">{{$user->password}}</td> --}}
+                    {{-- <td class="text-center">{{ $user->password}}</td> --}}
+                    <td class="text-center">{{ $user->password_confirm}}</td>
+
                     <td class="text-center">{{ $user->nombres}} {{ $user->apellidos}}</td>
                     <td class="text-center">
 
@@ -65,6 +69,7 @@
 
             </tbody>
         </table>
+    </div>
     </div>
     <!-- END: Data List -->
 </div>

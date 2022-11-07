@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('password_confirm');
             $table->integer('id_estudiante');
             $table->string('mod_user');
             $table->integer('tipo_mod');

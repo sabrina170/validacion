@@ -18,11 +18,11 @@ class CreateAlumnosTable extends Migration
             $table->string('nombres');
             $table->string('apellidos');
             $table->integer('dni');
-            $table->string('codigo_cer');
-            $table->date('inicio');
-            $table->date('final');
-            $table->string('image');
-            $table->string('codigo_cur');
+            // $table->string('codigo_cer');
+            // $table->date('inicio');
+            // $table->date('final');
+            // $table->string('image');
+            // $table->string('codigo_cur');
             $table->string('mod_user');
             $table->integer('tipo_mod');
             $table->timestamps();

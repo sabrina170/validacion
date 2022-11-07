@@ -21,7 +21,7 @@ class UserController extends Controller
         // $users  = User::orderByDesc('id')->get();
 
         $users = User::join("alumnos", "alumnos.id", "=", "users.id_estudiante")
-            ->select("users.id", "name", "email", "password", "nombres", "apellidos", "users.mod_user", "users.tipo_mod")
+            ->select("users.id", "name", "email", "password", "password_confirm", "nombres", "apellidos", "users.mod_user", "users.tipo_mod")
             ->get();
 
         $alumnos  = Alumno::orderByDesc('id')->get();
@@ -37,18 +37,18 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->password_confirm = $request->password;
         $user->id_estudiante = $request->id_estudiante;
         $user->mod_user = $request->mod_user;
         $user->tipo_mod = $request->tipo_mod;
 
-        // $user->estado = '1';
-        // $user->ku = date("Ymd-His");
-        // $user->tipo = 1;
         $user->assignRole('estudiante');
         $user->save();
         Auth::login($user);
 
         return redirect(route('usuarios.index'));
+
+        // dd($request);
     }
 
     public function login(Request $request)

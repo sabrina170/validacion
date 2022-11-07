@@ -36,7 +36,7 @@
                     <div class="col-span-12 sm:col-span-6">
                         <label for="modal-form-1" class="form-label">Contraseña</label>
                         <input id="modal-form-1" type="text" class="form-control form-control-rounded"
-                        placeholder="**********" name="Password">
+                        placeholder="**********" name="password">
                      </div>
                      <div class="col-span-12 sm:col-span-12">
                          <!-- BEGIN: Basic Select --> <div>

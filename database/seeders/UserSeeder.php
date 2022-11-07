@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('123'),
+            'password_confirm' => '123',
             'id_estudiante' => 1,
             'mod_user' => '',
             'tipo_mod' => 1
@@ -29,6 +30,7 @@ class UserSeeder extends Seeder
             'name' => 'sabrina',
             'email' => 'sabrina@gmail.com',
             'password' => Hash::make('123'),
+            'password_confirm' => '123',
             'id_estudiante' => 1,
             'mod_user' => '',
             'tipo_mod' => 1
@@ -38,12 +40,7 @@ class UserSeeder extends Seeder
             'nombres' => 'demo',
             'apellidos' => 'demo',
             'dni' => 0,
-            'codigo_cer' => 0,
-            'inicio' => date('Y-m-d H:i:s'),
-            'final' => date('Y-m-d H:i:s'),
-            'image' => '',
-            'codigo_cur' => '',
-            'mod_user' => '',
+            'mod_user' => '1',
             'tipo_mod' => 1,
         ]);
     }

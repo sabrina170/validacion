@@ -27,11 +27,6 @@ class AlumnoRequest extends FormRequest
             'nombres' => 'required',
             'apellidos' => 'required',
             'dni' => 'required',
-            'codigo_cer' => 'required',
-            'inicio' => 'required',
-            'final' => 'required',
-            // 'image' => 'required',
-            'codigo_cur' => 'required',
             'mod_user' => '',
             'tipo_mod' => '',
 

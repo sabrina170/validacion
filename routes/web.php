@@ -49,6 +49,11 @@ Route::get('detalles-alum/{alum}', [AlumnoController::class, "detalles"])->name(
 Route::get('actualizar-alum/{alum}', [AlumnoController::class, "edit"])->name('alumnos.edit');
 Route::put('actualizar/{alumno}', [AlumnoController::class, "update"])->name('editaralumno');
 
+// CERTIFICADOS
+Route::post('/crearcertificado', [AlumnoController::class, "crear_certificado"])->name('crearcertificado');
+Route::put('actualizar-cer/{cer}', [AlumnoController::class, "actualizar_certificado"])->name('actualizarcertificado');
+
+
 // USUARIOS
 Route::get('/usuarios', [UserController::class, "index"])->name('usuarios.index');
 Route::post('/validar-registro', [UserController::class, 'register'])->name('validar-registro');

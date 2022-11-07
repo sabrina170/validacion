@@ -130,17 +130,9 @@
                           <h5> Alumno: {{$cer->nombres}} {{$cer->apellidos}}</h5>
                             {{-- <img class="" src="/images-cer/{{$cer->image}}" title="Certificado"> --}}
                         @endforeach
-                        {{-- @foreach ($cer->alumnoImages as $img)
-                        <div class="h-32 px-2">
-                            <div class="h-full bg-slate-100 dark:bg-darkmode-400 rounded-md">
-                                <img src="/{{$img->image}}" />
-                            {{ $img->id}}
-                            </div>
-                        </div>
-                        @endforeach --}}
+                       
 
-                                @foreach ($cer->alumnoImages as $img)
-                                {{-- {{$img->id}} --}}
+                                @foreach ($cer->certificadoImages as $img)
 
                                 <img src="/{{$img->image}}" class="img-fluid" alt="...">
 

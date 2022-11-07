@@ -27,38 +27,29 @@
             <thead>
                 <tr>
                     {{-- <th class="whitespace-nowrap">ID</th> --}}
-                    <th class="text-center whitespace-nowrap">Foto Perfil</th>
+                    <th class="text-center whitespace-nowrap">Id</th>
                     <th class="whitespace-nowrap">Nombres</th>
                     <th class="text-center whitespace-nowrap">Apellidos</th>
                     <th class="text-center whitespace-nowrap">DNI</th>
-                    <th class="text-center whitespace-nowrap">Cod. Certificado</th>
+                    {{-- <th class="text-center whitespace-nowrap">Cod. Certificado</th>
                     <th class="text-center whitespace-nowrap">Inicio Clases</th>
-                    <th class="text-center whitespace-nowrap">Fin Clases</th>
+                    <th class="text-center whitespace-nowrap">Fin Clases</th> --}}
                     <th class="text-center whitespace-nowrap">Modificado</th>
-                    <th class="text-center whitespace-nowrap">Cod. Curso</th>
-                    <th class="text-center whitespace-nowrap">ACTIONS</th>
+                    <th class="text-center whitespace-nowrap">Certificado</th>
+                    <th class="text-center whitespace-nowrap">Fecha</th>
+                    <th class="text-center whitespace-nowrap">ACCIONES</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($alumnos as $alum)
                 <tr class="intro-x">
-                    {{-- <td>{{$alum->id}}</td> --}}
-                    <td class="w-40">
-                        <div class="flex">
-                            <div class="w-10 h-10 image-fit zoom-in">
-                                {{-- src="{{asset('images-cer/'.$alum->image.'')}} --}}
-                                <img class="tooltip rounded-full" src="/images-cer/{{$alum->image}}" title="Certificado">
-                            </div> 
-                        </div>
-                    </td>
+                    <td>{{$alum->id}}</td>
+                    
                     <td>
                         <a href="" class="font-medium whitespace-nowrap">{{ $alum->nombres}}</a> 
                     </td>
                     <td class="text-center">{{ $alum->apellidos}}</td>
                     <td class="text-center">{{ $alum->dni}}</td>
-                    <td class="text-center">{{ $alum->codigo_cer}}</td>
-                    <td class="text-center">{{ $alum->inicio}}</td>
-                    <td class="text-center">{{ $alum->final}}</td>
                 <td>
                     @if ($alum->tipo_mod==1)
                    
@@ -69,8 +60,17 @@
                     <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">
                        <strong>Actualizado</strong> por <strong>{{$alum->mod_user}}</strong>
                     </div>
+                    
+                    @elseif ($alum->tipo_mod==3)
+                    <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">
+                       <strong>Actualizo certificados</strong> {{$alum->mod_user}}</strong>
+                    </div>
                     @endif</td>
-                    <td class="text-center">{{ $alum->codigo_cur}}</td>
+                    <td class="text-center">
+                        <a  class="btn btn-rounded btn-primary-soft w-24 mr-1 mb-2" data-tw-toggle="modal"
+                             data-tw-target="#modalcrearcertificado{{$alum->id}}"> Crear Certificado</a>
+                    </td>
+                    <td class="text-center">{{ date($alum->created_at)}}</td>
                     <td class="table-report__action w-56">
                         <div class="flex items-center ">
                             <a class="flex items-center text-success mr-3"
@@ -88,7 +88,7 @@
                     </td>
                 </tr>
                 @include("alumnos.modal-eli")
-
+                @include("alumnos.modal-crear-cer")
                 @endforeach
                 
             </tbody>
