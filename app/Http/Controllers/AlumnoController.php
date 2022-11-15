@@ -124,9 +124,9 @@ class AlumnoController extends Controller
     {
         $alumnos  = Alumno::orderByDesc('id')->where('id', $alum)->get();
         $certificados  = Certificado::orderByDesc('id')->where('alumno_id', $alum)->get();
-
+        $usuarios  = User::orderByDesc('id')->where('id_estudiante', $alum)->get();
         $certificados_imagenes  = CertificadoImage::orderByDesc('id')->get();
-        return view('alumnos.edit', compact('alumnos', 'certificados', 'certificados_imagenes'));
+        return view('alumnos.edit', compact('alumnos', 'certificados', 'certificados_imagenes', 'usuarios'));
     }
 
     /**
@@ -142,24 +142,14 @@ class AlumnoController extends Controller
 
         $alu['tipo_mod'] = 2;
         $alumno->update($alu);
-        // GALERIA DE IMAGENES
-        // if ($request->hasfile('images')) {
-        //     $uploadPath = 'images-cer/';
 
-        //     $i = 1;
-        //     foreach ($request->file('images') as $imagefile) {
-        //         $exten = $imagefile->getClientOriginalExtension();
-        //         $filename = time() . $i++ . "." . $exten;
-        //         $imagefile->move($uploadPath, $filename);
-        //         $finalImagePathName = $uploadPath . $filename;
-        //         // $input['image'] = "$profileImage";
+        $alumno_id = $alumno->id;
+        $email = $request->email;
+        $password_confirm = $request->password_confirm;
+        $password = Hash::make($request->password_confirm);
 
-        //         $alumno->alumnoImages()->create([
-        //             'product_id' => $alumno->id,
-        //             'image' => $finalImagePathName,
-        //         ]);
-        //     }
-        // }
+
+        DB::table('users')->where('id', $alumno_id)->limit(1)->update(['email' => $email, 'password' => $password, 'password_confirm' => $password_confirm,]);
 
         return redirect()->route('alumnos.index')->with('message' . 'alumnos actualizado exitosamente');
     }

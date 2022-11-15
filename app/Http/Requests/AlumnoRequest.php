@@ -29,6 +29,8 @@ class AlumnoRequest extends FormRequest
             'dni' => 'required',
             'mod_user' => '',
             'tipo_mod' => '',
+            'email' => 'required',
+            'password_confirm' => 'required',
 
         ];
     }

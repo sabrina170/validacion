@@ -33,7 +33,20 @@
                     <input id="modal-form-1" type="number" class="form-control form-control-rounded"
                     placeholder="76232421" name="dni" value="{{$alum->dni}}">
                  </div>
-                
+                 @foreach($usuarios as $user)
+
+                 <div class="col-span-12 sm:col-span-12">
+                    <h2><strong>Credenciales del alumno</strong></h2>
+                    <label for="modal-form-2" class="form-label">Email (Usuario)</label>
+                    <input id="modal-form-2" type="email" class="form-control form-control-rounded"
+                    value="{{$user->email}}" name="email" required>
+                </div>
+                <div class="col-span-12 sm:col-span-12">
+                    <label for="modal-form-1" class="form-label">Contraseña</label>
+                    <input id="modal-form-1" type="text" class="form-control form-control-rounded"
+                    value="{{$user->password_confirm}}" name="password_confirm" required>
+                </div>
+                @endforeach
             </div>
                {{-- fin galeria --}}
                 <div class="col-span-12 sm:col-span-6">
@@ -42,22 +55,21 @@
                 
             </div>
             
-          
-
-            <div class="modal-footer">
-                {{-- <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary
-                 w-20 mr-1">Cancel</button> --}}
-                 <button type="submit" class="btn btn-primary w-20">Actualizar</button>
-               </div> <!-- END: Modal Footer -->
-
-            </form>
              {{-- certificados --}}
            <div class="text-center">
            @foreach($certificados as $cer)  
-                         <a href="javascript:;" data-tw-toggle="modal"
-                          data-tw-target="#editar-certi{{$cer->id}}" class="btn btn-primary">Certificado - <strong>{{ $cer->codigo_cer}}</strong></a>
+                         <a data-tw-toggle="modal"
+                          data-tw-target="#editar-certi{{$cer->id}}" class="btn btn-primary">
+                          Certificado - <strong>{{ $cer->codigo_cer}}</strong></a>
            @include("alumnos.modal-edit-certi")
+
            @endforeach
+           <div class="modal-footer">
+            {{-- <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary
+             w-20 mr-1">Cancel</button> --}}
+             <button type="submit" class="btn btn-primary w-20">Actualizar</button>
+           </div> <!-- END: Modal Footer -->
+        </form>
             </div> 
             {{-- fin de los certificados --}}
     </div>
