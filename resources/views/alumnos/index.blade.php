@@ -20,10 +20,11 @@
          <i data-lucide="alert-triangle" class="w-6 h-6 mr-2"></i> {{ Session::has('message')}} </div>
     @endif
     
+    
     <!-- BEGIN: Data List -->
     <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
         <div class="overflow-x-auto">
-        <table class="table table-report -mt-2">
+        <table  class="table table-report -mt-2">
             <thead>
                 <tr>
                     {{-- <th class="whitespace-nowrap">ID</th> --}}
@@ -93,6 +94,8 @@
                 
             </tbody>
         </table>
+
+    
         </div>
     </div>
     <!-- END: Data List -->
