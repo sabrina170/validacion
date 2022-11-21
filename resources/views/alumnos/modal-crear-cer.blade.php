@@ -29,9 +29,6 @@
                         <input id="modal-form-2" type="date" class="form-control form-control-rounded"
                           name="final" required>
                     </div>
-
-                    
-                  
                     {{-- Galeria --}}
                     <div class="col-span-12 sm:col-span-6">
                         <label for="modal-form-2" class="form-label">Foto certificados</label>

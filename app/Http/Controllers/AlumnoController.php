@@ -54,15 +54,20 @@ class AlumnoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, AlumnoRequest $alumnosrequest)
+    public function store(Request $request)
     {
-        $input = $alumnosrequest->validated();
-
-        // dd($request);
-        $alumno = Alumno::create($input);
-        // credenciales
+        // $input = $alumnosrequest->validated();
+        //CREAR AL ALUMNO
+        $alumno = Alumno::create([
+            'nombres' => $request->nombres,
+            'apellidos' => $request->apellidos,
+            'dni' => $request->dni,
+            'mod_user' => $request->mod_user,
+            'tipo_mod' => $request->tipo_mod,
+        ]);
+        // dd($alumno->id);
+        // CREAR EL USUARIO
         $user = new User();
-
         $user->name = $request->nombres;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
@@ -70,12 +75,36 @@ class AlumnoController extends Controller
         $user->id_estudiante = $alumno->id;
         $user->mod_user = $request->mod_user;
         $user->tipo_mod = $request->tipo_mod;
-
+        // ASIGNANDO EL ROL
         $user->assignRole('estudiante');
         $user->save();
         // Auth::login($user);
         // return $alumno->id;
 
+        // CREAR EL CERTIFICADO 
+        $certi = Certificado::create([
+            'alumno_id' => $alumno->id,
+            'inicio' => $request->inicio,
+            'codigo_cer' => $request->codigo_cer,
+            'final' => $request->final,
+            'codigo_cur' => $request->codigo_cur,
+        ]);
+        if ($request->hasfile('images')) {
+            $uploadPath = 'images-cer/';
+            $i = 1;
+            foreach ($request->file('images') as $imagefile) {
+                $exten = $imagefile->getClientOriginalExtension();
+                $filename = time() . $i++ . "." . $exten;
+                $imagefile->move($uploadPath, $filename);
+                $finalImagePathName = $uploadPath . $filename;
+                // $input['image'] = "$profileImage";
+
+                $certi->certificadoImages()->create([
+                    'cer_id' => $certi->id,
+                    'image' => $finalImagePathName,
+                ]);
+            }
+        }
         return redirect()->route('alumnos.index')->with('message' . 'alumnos creado exitosamente');
     }
 
@@ -164,30 +193,34 @@ class AlumnoController extends Controller
 
         return redirect()->route('alumnos.index')->with('message' . 'alumnos actualizado exitosamente');
     }
-    public function actualizar_certificado(Request $request, Certificado $certi)
+    public function actualizar_certificado(Request $request)
     {
-        // dd($request->id_cer);
-        $id_cer = $request->id_cer;
-        // $cc = $request->validate();
-        // $alu['tipo_mod'] = 3;
-        $certi->update([
-            'codigo_cer' => $request->codigo_cer,
-            'inicio' => $request->inicio,
-            'final' => $request->final,
-            'codigo_cur' => $request->codigo_cur,
-        ]);
+        // dd($request);
+        $certi = Certificado::find($request->cer_id);
+        $certi->codigo_cer = $request->codigo_cer;
+        $certi->inicio = $request->inicio;
+        $certi->final = $request->final;
+        $certi->codigo_cur = $request->codigo_cur;
+        $certi->alumno_id = $request->alumno_id;
+
+        $certi->save();
         $alumno_id = $request->alumno_id;
-        // $cert_id = $cer->id;
 
         DB::table('alumnos')->where('id', $alumno_id)->limit(1)->update(['tipo_mod' => '3']);
         // $cer->update($request);
 
         // GALERIA DE IMAGENES
         if ($request->hasfile('images')) {
-            $uploadPath = 'images-cer/';
 
+            // dd($request->certis);
+            foreach ($request->certis as $key) {
+                DB::table('certificado_images')->where('id', $key)->delete();
+            }
+            $uploadPath = 'images-cer/';
             $i = 1;
+
             foreach ($request->file('images') as $imagefile) {
+
                 $exten = $imagefile->getClientOriginalExtension();
                 $filename = time() . $i++ . "." . $exten;
                 $imagefile->move($uploadPath, $filename);
@@ -195,7 +228,7 @@ class AlumnoController extends Controller
                 // $input['image'] = "$profileImage";
 
                 $certi->certificadoImages()->create([
-                    'cer_id' => $request->id_cer,
+                    'cer_id' => $certi->id,
                     'image' => $finalImagePathName,
                 ]);
             }
@@ -284,5 +317,23 @@ class AlumnoController extends Controller
 
         return view('alumnos.detalles', compact('alumnos', 'certificados', 'certificados_imagenes'));
         // DB::table('users')->where('ku', $ku)
+    }
+
+    public function buscaralumno2(Request $request)
+    {
+        $buscar = $request->input('buscar');
+
+        $alumnos = Alumno::where('dni', 'like', "%$buscar%")->get();
+
+        return view('alumnos.index')->with('alumnos');
+    }
+
+    public function buscaralumno3(Request $request)
+    {
+        $buscar = $request->input('buscar');
+
+        $alumnos = Alumno::where('dni', 'like', "%$buscar%")->get();
+
+        return view('alumnos.index')->with('alumnos');
     }
 }

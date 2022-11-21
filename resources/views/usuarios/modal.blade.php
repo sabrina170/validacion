@@ -33,22 +33,21 @@
                         <input id="modal-form-2" type="email" class="form-control form-control-rounded"
                          placeholder="email@gmail.com" name="email">
                     </div>
-                    <div class="col-span-12 sm:col-span-6">
+                    <div class="col-span-6 sm:col-span-6">
                         <label for="modal-form-1" class="form-label">Contraseña</label>
                         <input id="modal-form-1" type="text" class="form-control form-control-rounded"
                         placeholder="**********" name="password">
                      </div>
-                     <div class="col-span-12 sm:col-span-12">
+                     <div class="col-span-6 sm:col-span-6">
                          <!-- BEGIN: Basic Select --> <div>
-                             <label>Alumno</label>
+                             <label>Tipo</label>
                               <div class="mt-2"> 
                                
                                 <select data-placeholder="Selecciona un alumno"
-                                 class="tom-select w-full" name="id_estudiante">
-                                    <option selected>Busca al alumno</option>
-                                    @foreach($alumnos as $alum)
-                                    <option value="{{$alum->id}}">{{$alum->dni}} -  {{$alum->nombres}} {{$alum->apellidos}}</option> 
-                                    @endforeach
+                                 class="tom-select w-full" name="tipo">
+                                    <option selected>Seleccionar</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="3">Trabajador</option>
                                 </select>
                             </div>
                         </div> <!-- END: Basic Select --> 

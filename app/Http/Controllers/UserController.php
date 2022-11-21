@@ -11,7 +11,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Database\Seeders\RoleSeeder;
-
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -20,9 +20,7 @@ class UserController extends Controller
     {
         // $users  = User::orderByDesc('id')->get();
 
-        $users = User::join("alumnos", "alumnos.id", "=", "users.id_estudiante")
-            ->select("users.id", "name", "email", "password", "password_confirm", "nombres", "apellidos", "users.mod_user", "users.tipo_mod")
-            ->get();
+        $users = User::orderByDesc('id')->get();
 
         $alumnos  = Alumno::orderByDesc('id')->get();
 
@@ -38,13 +36,18 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->password_confirm = $request->password;
-        $user->id_estudiante = $request->id_estudiante;
+        $user->id_estudiante = 0;
         $user->mod_user = $request->mod_user;
         $user->tipo_mod = $request->tipo_mod;
 
-        $user->assignRole('estudiante');
+        if ($request->tipo == 1) {
+            $user->assignRole('admin');
+        } elseif ($request->tipo == 3) {
+            $user->assignRole('trabajador');
+        }
+
         $user->save();
-        Auth::login($user);
+        // Auth::login($user);
 
         return redirect(route('usuarios.index'));
 
@@ -88,5 +91,25 @@ class UserController extends Controller
         $user->delete();
         $nombre = $user->nombres;
         return redirect()->route('usuarios.index');
+    }
+
+    public function editaruser(Request $request)
+    {
+        $id_user = $request->id;
+        $email = $request->email;
+        $password_confirm = $request->password_confirm;
+        $password = Hash::make($request->password_confirm);
+        $mod_user = $request->mod_user;
+        $tipo_mod = $request->tipo_mod;
+
+        DB::table('users')->where('id', $id_user)->limit(1)->update([
+            'email' => $email,
+            'password' => $password,
+            'password_confirm' => $password_confirm,
+            'tipo_mod' => $tipo_mod,
+            'mod_user' => $mod_user
+        ]);
+
+        return redirect()->route('usuarios.index')->with('message' . 'alumnos actualizado exitosamente');
     }
 }

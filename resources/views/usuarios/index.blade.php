@@ -25,7 +25,9 @@
                     <th class="whitespace-nowrap">Usuario</th>
                     {{-- <th class="text-center whitespace-nowrap">Contraseña</th> --}}
                     <th class="text-center whitespace-nowrap">Contraseña</th>
-                    <th class="text-center whitespace-nowrap">Estudiante</th>
+                    <th class="text-center whitespace-nowrap">Tipo</th>
+
+                    <th class="text-center whitespace-nowrap">Fecha</th>
                     <th class="text-center whitespace-nowrap">Modificado</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
@@ -40,7 +42,16 @@
                     {{-- <td class="text-center">{{ $user->password}}</td> --}}
                     <td class="text-center">{{ $user->password_confirm}}</td>
 
-                    <td class="text-center">{{ $user->nombres}} {{ $user->apellidos}}</td>
+                    <td class="text-center">{{ $user->created_at}}</td>
+                    <td class="text-center">
+                        @if ($user->hasRole('admin'))
+                         <strong>Administrador</strong>
+                        @elseif ($user->hasRole('estudiante'))
+                           <strong>Estudiante</strong>
+                        @elseif ($user->hasRole('trabajador'))
+                           <strong>Trabajador</strong>
+                        @endif
+                    </td>
                     <td class="text-center">
 
                         @if ($user->tipo_mod==1)
@@ -49,7 +60,7 @@
                          <strong>Registrado</strong> por <strong>{{$user->mod_user}}</strong>
                         </div>
                         @elseif ($user->tipo_mod==2)
-                        <div class="bg-success/20 text-success rounded px-2 mt-1.5">
+                        <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">
                            <strong>Actualizado</strong> por <strong>{{$user->mod_user}}</strong>
                         </div>
                         @endif
@@ -57,7 +68,9 @@
 
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
-                            <a class="flex items-center mr-3" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
+                            <a class="flex items-center text-primary" data-tw-toggle="modal"
+                            data-tw-target="#edit-confirmation-modal{{$user->id}}">
+                             <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
                             <a class="flex items-center text-danger" data-tw-toggle="modal"
                              data-tw-target="#delete-confirmation-modal{{$user->id}}">
                               <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
@@ -65,6 +78,7 @@
                     </td>
                 </tr>
                 @include("usuarios.modal-eli")
+                @include("usuarios.modal-edi")
                 @endforeach
 
             </tbody>

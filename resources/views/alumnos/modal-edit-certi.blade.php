@@ -7,8 +7,9 @@
             </div> <!-- END: Modal Header -->
           
             <form action="{{route('actualizarcertificado',$cer->id)}}" method="post" enctype="multipart/form-data" >
+                @method('put')
                 @csrf
-            @method('PUT')
+                
                 <div class="modal-body grid grid-cols-12 gap-4">
                     <div class="col-span-12 sm:col-span-6 input-form">
                         <label for="modal-form-1" class="form-label">Codigo de Curso</label>
@@ -40,18 +41,20 @@
                    {{-- fin galeria --}}
                     <div class="col-span-12 sm:col-span-6">
                     <input id="modal-form-2" type="hidden" value="{{$alum->id}}" name="alumno_id">
-                    <input id="modal-form-2" type="hidden" value="{{$cer->id}}" name="id_cer">
+                    <input id="modal-form-2" type="hidden" value="{{$cer->id}}" name="cer_id">
                 </div>
                  <!-- END: Modal Body -->
                  <div class="mx-6 pb-8">
                     <div class="fade-mode"> 
                         @foreach($certificados_imagenes as $cerima)  
                         @if ($cer->id==$cerima->cer_id)
+                       
                         <div class="h-24 px-2">
                             <div class="h-full image-fit rounded-md overflow-hidden"> 
+                                <input type="hidden" value="{{$cerima->id}}"  name="certis[]">
                                <img src="/{{$cerima->image}}" />
                             </div> 
-                           </div>
+                        </div>
                         @else
                             
                         @endif
@@ -63,7 +66,7 @@
                 <div class="modal-footer">
                     <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary
                      w-20 mr-1">Cancel</button>
-                     <button type="submit" class="btn btn-primary w-20">Crear</button>
+                     <button type="submit" class="btn btn-primary w-20">Actualizar</button>
                    </div> <!-- END: Modal Footer -->
 
                 </form>

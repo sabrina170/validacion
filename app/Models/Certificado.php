@@ -14,7 +14,6 @@ class Certificado extends Model
         'codigo_cer',
         'final',
         'codigo_cur',
-
         // 'image',
 
     ];

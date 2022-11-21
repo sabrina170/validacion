@@ -57,13 +57,7 @@
             
              {{-- certificados --}}
            <div class="text-center">
-           @foreach($certificados as $cer)  
-                         <a data-tw-toggle="modal"
-                          data-tw-target="#editar-certi{{$cer->id}}" class="btn btn-primary">
-                          Certificado - <strong>{{ $cer->codigo_cer}}</strong></a>
-           @include("alumnos.modal-edit-certi")
-
-           @endforeach
+          
            <div class="modal-footer">
             {{-- <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary
              w-20 mr-1">Cancel</button> --}}
@@ -71,6 +65,12 @@
            </div> <!-- END: Modal Footer -->
         </form>
             </div> 
+            @foreach($certificados as $cer)  
+            <a data-tw-toggle="modal"
+             data-tw-target="#editar-certi{{$cer->id}}" class="btn btn-primary">
+             Certificado - <strong>{{ $cer->codigo_cer}}</strong></a>
+            @include("alumnos.modal-edit-certi")
+            @endforeach
             {{-- fin de los certificados --}}
     </div>
 </div>

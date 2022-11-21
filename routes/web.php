@@ -58,6 +58,11 @@ Route::put('actualizar-cer/{cer}', [AlumnoController::class, "actualizar_certifi
 Route::get('/usuarios', [UserController::class, "index"])->name('usuarios.index');
 Route::post('/validar-registro', [UserController::class, 'register'])->name('validar-registro');
 Route::delete('usuario/{user}/eliminar', [UserController::class, "destroy"])->name('usuario.delete');
+Route::put('actualizar-usuario', [UserController::class, "editaruser"])->name('editaruser');
+
+// BUSCADOR
+Route::get('/search2', [AlumnoController::class, "buscaralumno2"])->name('buscaralumno2');
+Route::get('/search3/{buscar}', [AlumnoController::class, "buscaralumno3"])->name('buscaralumno3');
 
 
 

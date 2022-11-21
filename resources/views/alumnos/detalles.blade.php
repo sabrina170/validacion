@@ -16,10 +16,10 @@
             <div class="relative flex items-center p-5">
             
                 <div class="ml-4 mr-auto">
-                    <h2> Información Personal</h2> 
-                    <div class="font-medium text-base">{{$alum->nombres}}</div>
-                    <div class="text-slate-500">{{$alum->apellidos}}</div>
-                    <div class="text-slate-500 mr-5 sm:mr-5">{{$alum->dni}}</div>
+                    <h2 class="font-medium text-base mr-auto"> Información Personal</h2> 
+                    <div class="text-slate-500">Nombres: <strong>{{$alum->nombres}}</strong> </div>
+                    <div class="text-slate-500">Apellidos: <strong>{{$alum->apellidos}}</strong></div>
+                    <div class="text-slate-500">DNI:  <strong>{{$alum->dni}}</strong></div>
                 </div>
             </div>
             
@@ -33,7 +33,7 @@
             <div class="intro-y box col-span-12 2xl:col-span-8">
                 <div class="flex items-center px-5 py-3 border-b border-slate-200/60 dark:border-darkmode-400">
                     <h2 class="font-medium text-base mr-auto">
-                        Certificado <strong>{{$cer->codigo_cer}}</strong><br>
+                        Certificado: <strong>{{$cer->codigo_cer}}</strong><br>
                         Codigo Curso: <strong>{{$cer->codigo_cur}}</strong><br>
                         Fecha: Inicio: <strong>{{$cer->inicio}}</strong> / Final:<strong>{{$cer->final}}</strong><br>
                     </h2>

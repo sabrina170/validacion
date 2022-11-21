@@ -20,7 +20,28 @@
          <i data-lucide="alert-triangle" class="w-6 h-6 mr-2"></i> {{ Session::has('message')}} </div>
     @endif
     
-    
+    <div class="search hidden sm:block">
+        <form action="" action="{{ route('buscaralumno2') }}" method="post">
+            @csrf
+            <input type="number" id="buscar" name="buscar" class="search__input form-control border-transparent" placeholder="Buscar por DNI...">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+    <div id="result" class="panel panel-default" style="display:none">
+        <ul class="list-group" id="memList">
+            @if(isset($alumnos))
+            @foreach($alumnos as $alum)
+                <li class="list-group-item">
+                    
+                    {{ $alum->apellidos}}
+                    </li>
+            @endforeach
+        @else
+            <li class="list-group-item">No Results Found</li>
+        @endif
+        </ul>
+    </div>
+
     <!-- BEGIN: Data List -->
     <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
         <div class="overflow-x-auto">
@@ -102,4 +123,23 @@
 </div>
 
 <!-- END: Profile Info -->
+@endsection
+@section('js')
+    <script>
+          $(document).keyup(function () {
+        var buscar = $('#buscar').val();
+        // alert(buscar);
+        if (buscar="") {
+            $('#memList').html("");
+            $('#result').hide();
+        }else{
+            // $.get(route("buscaralumno3",buscar),function (data) {
+        $.get("{{route('buscaralumno3',)}}",function (data) {
+            $('#memList').empty().html(data);
+            $('#result').show();
+            })
+        }
+    })
+
+    </script>
 @endsection
