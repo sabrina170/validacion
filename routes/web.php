@@ -37,7 +37,7 @@ Route::post('/inicia-sesion', [UserController::class, 'login'])->name('inicia-se
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 // ESTUDIANTE
-Route::view('/estudiante', "estudiante")->name('estudiante');
+Route::get('/estudiante', [AlumnoController::class, "datosestudiantes"])->name('estudiante');
 Route::view('/alumnos', "alumnos")->name('alumnos');
 
 Route::get('/alumnos', [AlumnoController::class, "index"])->name('alumnos.index');

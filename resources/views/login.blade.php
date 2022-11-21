@@ -29,9 +29,9 @@
               <div class="my-auto">
                   <img alt="Midone - HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{asset('images/illustration.svg')}}">
                   <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                      Unos cliks mas para
+                      Unos clics m&aacute;s para 
                       <br>
-                      Iniciar sesion en su cuenta.
+                      Iniciar Sesi&oacute;n en su cuenta.
                   </div>
                   <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-slate-400">MUG CENTRO PERU</div>
               </div>
@@ -45,7 +45,7 @@
                   </h2>
                   <form  method="POST" action="{{route('inicia-sesion')}}">
                     @csrf
-                  <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">Unos clics mè´°s para Iniciar sesiè´—n en su cuenta.</div>
+                  <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">Unos clics m&aacute;s para Iniciar Sesi&oacute;n en su cuenta.</div>
                   <div class="intro-x mt-8">
                       <input type="text" class="intro-x login__input form-control py-3 px-4 block" placeholder="Email" name="email">
                       <input type="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password" name="password">

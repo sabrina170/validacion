@@ -38,15 +38,20 @@
             <div class="h-full flex items-center">
                 <!-- BEGIN: Logo -->
                 <a href="" class="logo -intro-x hidden md:flex xl:w-[180px] block">
-                    <img alt="Midone - HTML Admin Template" class="logo__image w-4 h-8" src="{{asset('images/icono.png')}}">
-                    <span class="logo__text text-white text ml-3"> Microsoft Users Group <br> Centro - Perú </span>
+                    <img alt="Midone - HTML Admin Template" class="logo__image w-6" src="{{asset('img2/logo_banco.png')}}">
                 </a>
                 <!-- END: Logo -->
                 <!-- BEGIN: Breadcrumb -->
                 <nav aria-label="breadcrumb" class="-intro-x h-[45px] mr-auto">
                     <ol class="breadcrumb breadcrumb-light">
                         <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        @if (Auth::user()->hasRole('admin'))
                         <li class="breadcrumb-item active" aria-current="page">Administrador</li>
+                        @elseif (Auth::user()->hasRole('estudiante'))
+                        <li class="breadcrumb-item active" aria-current="page">Estudiante</li>
+                        @elseif (Auth::user()->hasRole('trabajador'))
+                        <li class="breadcrumb-item active" aria-current="page">Trabajador</li>
+                        @endif
                     </ol>
                 </nav>
 
@@ -59,8 +64,8 @@
                         <ul class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
                             <li class="p-2">
                                 <div class="font-medium">{{Auth::user()->name}}</div>
-                                <div class="text-xs text-white/60
-                                mt-0.5 dark:text-slate-500">Administrador</div>
+                                {{-- <div class="text-xs text-white/60
+                                mt-0.5 dark:text-slate-500">Administrador</div> --}}
                             </li>
                             <li>
                                 <hr class="dropdown-divider border-white/[0.08]">
@@ -79,6 +84,8 @@
             <!-- BEGIN: Side Menu -->
             <nav class="side-nav">
                 <ul>
+                @if (Auth::user()->hasRole('admin'))
+
                     <li>
                         <a href="{{route('alumnos.index')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="inbox"></i> </div>
@@ -92,7 +99,18 @@
                         </a>
                     </li>
 
-                </ul>
+
+                @elseif (Auth::user()->hasRole('estudiante'))
+
+                @elseif (Auth::user()->hasRole('trabajador'))
+                <li>
+                    <a href="{{route('alumnos.index')}}" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="inbox"></i> </div>
+                        <div class="side-menu__title"> Alumnos </div>
+                    </a>
+                </li>
+                @endif
+            </ul>
             </nav>
             <div class="content">
         @yield('content')

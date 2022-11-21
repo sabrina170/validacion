@@ -36,7 +36,7 @@
                         <a class="nav-link active" href="{{route('index')}}">INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('validacion')}}">VALIDACION DE CERTIFICADO</a>
+                        <a class="nav-link" href="{{route('validacion')}}">VALIDACIÓN DE CERTIFICADO</a>
                     </li>
                 </ul>
                 <a class="btn btn-primary ms-lg-3" href="{{route('login')}}">INICIAR SESION</a>
@@ -49,9 +49,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 mx-auto text-center">
-                    <h1 class="display-4 text-white">Certificacion en el Mug Centro Peru</h1>
-                    <p class="text-white my-3">El primerpaso para una carrera Profesional</p>
-                    <a href="{{route('validacion')}}" class="btn btn-outline-light">VALIDA TU CODIGO</a>
+                    <h1 class="display-4 text-white">Certificación en el Mug Centro Peru</h1>
+                    <p class="text-white my-3">El primer paso para una Carrera Profesional.</p>
+                    <a href="{{route('validacion')}}" class="btn btn-outline-light">VALIDA TU CÓDIGO </a>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@
                             <i class='bx bxs-rocket'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Es un Aprendizaje</h5>
-                        <p>Que refuerza tus conocimientos previos o ayuda a conocer nuevos metodos y aplicaciones para mejorar tu rendimiento ante un trabajo </p>
+                        <p>Que refuerza tus conocimientos previos o ayuda a conocer nuevos métodos y aplicaciones para mejorar tu rendimiento ante un trabajo. </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
@@ -128,7 +128,7 @@
                             <i class='bx bxs-doughnut-chart'></i>
                         </div>
                         <h5 class="mt-4 mb-2">Mejora de Capacidades</h5>
-                        <p>Ayuda al reforzamiento de habilidades, conocimientos y especializacion ante uno o varios problemas, el cual la certificacion te ayudara a estar preparado para la solucion de problemas</p>
+                        <p>Ayuda al reforzamiento de habilidades, conocimientos y especialización ante uno o varios problemas, el cual la certificación te ayudara a estar preparado para la solución de problemas.</p>
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                             </div>
                             <div>
                                 <h5>Consolidar habilidades</h5>
-                                <p>Ayuda a fidelizar tus habilidades y consolidar lo aprendido con la practica. </p>
+                                <p>Ayuda a fidelizar tus habilidades y consolidar lo aprendido con la práctica.</p>
                             </div>
                         </div>
                         <div class="feature d-flex">
@@ -170,7 +170,7 @@
                             </div>
                             <div>
                                 <h5>Ser productivo</h5>
-                                <p>Ayuda en la resolucion de problemas y en la facil comprension de nuevos temas. </p>
+                                <p>Ayuda en la resolución de problemas y en la fácil comprensión de nuevos temas.</p>
                             </div>
                         </div>
                         <div class="feature d-flex">
@@ -290,7 +290,7 @@
                     <div class="team-member card-effect">
                         <img src="{{asset('img2/icono.png')}}">
                         <h5 class="mb-0 mt-4">Proceso</h5>
-                        <p>Para obtenerlo es necesario formarse, cumplir unas horas teorícas y de prácticas supervisadas, y finalmente un examen práctico. En este caso el certificado valida que la persona ha hecho el recorrido, un proceso definido.</p>
+                        <p>Para obtenerlo es necesario formarse, cumplir unas horas teóricas y de prácticas supervisadas, y finalmente un examen práctico. En este caso el certificado valida que la persona ha hecho el recorrido, un proceso definido.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-4">
@@ -325,14 +325,14 @@
                     <div class="blog-post card-effect">
                         <img src="{{asset('img2/blog2.jpg')}}">
                         <h5 class="mt-4"><a href="#">Valida y aprende </a></h5>
-                        <p>Ideal para estudiantes o profesionales que necesitan aumentar sus posibilidades laborales en una carrera en tecnología.y/o habilidades blandas.</p>
+                        <p>Ideal para estudiantes o profesionales que necesitan aumentar sus posibilidades laborales en una carrera en tecnología. Y/o habilidades blandas.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="blog-post card-effect">
                         <img src="{{asset('img2/blog3.jpg')}}">
                         <h5 class="mt-4"><a href="#">Aprende cosas nuevas</a></h5>
-                        <p>Aborda una amplia gama de certificaciones en diversas áreas, Tecnología , educación,  empleabilidad entre otros</p>
+                        <p>Aborda una amplia gama de certificaciones en diversas áreas, Tecnología, Educación, Empleabilidad entre otros.</p>
                     </div>
                 </div>
             </div>
@@ -347,7 +347,7 @@
                 <div class="col-md-8 mx-auto text-center">
                     <h6 class="text-primary">MUG CENTRO PERU</h6>
                     <h1>CONTACTANOS</h1>
-                    <p>Realiza tus consutas sobre nuestros cursos de certificacion o cuando se aperturan.</p>
+                    <p>Realiza tus consultas sobre nuestros cursos de certificación o cuando se apertura.</p>
                 </div>
             </div>
 
@@ -383,9 +383,9 @@
                     <div class="col-lg-2">
                         <h5 class="text-white">INDICE</h5>
                         <ul class="list-unstyled">
-                            <li><a href="{{route('index')}}">Incio</a></li>
-                            <li><a href="{{route('validacion')}}">Consulta de Codigo</a></li>
-                            <li><a href="{{route('login')}}">Inicio de Sesion</a></li>
+                            <li><a href="{{route('index')}}">Inicio</a></li>
+                            <li><a href="{{route('validacion')}}">Consulta de Código</a></li>
+                            <li><a href="{{route('login')}}">Inicio de Sesión</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-2">
@@ -402,7 +402,7 @@
                         <ul class="list-unstyled">
                             <li>Direccion: Jr. Omar Yali N°371</li>
                             <li>Correo: Informes@iibs.edu.pe</li>
-                            <li>Telefono: (603) 555-0123</li>
+                            <li>Telefono: (+51) 912 055 585 </li>
                         </ul>
                     </div>
                 </div>

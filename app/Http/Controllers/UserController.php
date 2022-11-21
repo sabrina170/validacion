@@ -80,7 +80,7 @@ class UserController extends Controller
         //cerrar session o limpiar session
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect(route('login'));
+        return redirect(route('index'));
     }
 
     public function destroy(User $user)

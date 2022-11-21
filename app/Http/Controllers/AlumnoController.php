@@ -37,6 +37,17 @@ class AlumnoController extends Controller
     {
     }
 
+    public function datosestudiantes()
+    {
+        $alum = Auth::user()->id_estudiante;
+        $alumnos  = Alumno::orderByDesc('id')->where('id', $alum)->get();
+        $certificados  = Certificado::orderByDesc('id')->where('alumno_id', $alum)->get();
+
+        $certificados_imagenes  = CertificadoImage::orderByDesc('id')->get();
+
+        return view('estudiante', compact('alumnos', 'certificados', 'certificados_imagenes'));
+        // dd($alumnos);
+    }
     /**
      * Store a newly created resource in storage.
      *

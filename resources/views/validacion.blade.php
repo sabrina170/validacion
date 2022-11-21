@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="{{asset('css2/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <title>Validacion-MugCentro</title>
+    <title>Validación-MugCentro</title>
 
 
 </head>
@@ -36,7 +36,7 @@
                         <a class="nav-link" href="{{route('index')}}">INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{route('validacion')}}">VALIDACION DE CERTIFICADO</a>
+                        <a class="nav-link active" href="{{route('validacion')}}">VALIDACIÓN DE CERTIFICADO</a>
                     </li>
                 </ul>
                 <a class="btn btn-primary ms-lg-3" href="{{route('login')}}">INICIAR SESION</a>
@@ -50,15 +50,15 @@
         <div class="row mb-5">
             <div class="col-md-10 mx-auto text-center">
                 <h6 class="text-primary mt-3">MUG CENTRO PERU</h6>
-                <h1>Valida tu codigo de certificacion</h1>
+                <h1>Validar código de certificación</h1>
             </div>
         </div>
         <div class="col-lg-6 py-2">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
-                        <h2>Consultar Certificado</h2>
-                        <p> NOTA: Se pueden visualizar los codigos de los certificados hasta el presente año 2022.</p>
+                        <h2>Consulta de Certificado</h2>
+                        <p> NOTA: Los certificados antes del 2022 validar vía whatsapp 912 055 585 Enviando el Código del certificado.</p>
                     </div>
                     <form action="{{route('buscaralumno')}}" method="post">
                         @csrf
@@ -91,7 +91,7 @@
             </div>
             <div class="row mb-5 mt-4">
                 <div class="col-md-10 mx-auto text-center">
-                    <button class="btn btn-primary" type="submit">Buscar Certificado</button>
+                    <button class="btn btn-primary" type="submit">BUSCAR CERTIFICADO</button>
                 </div>
             </div>
         </form>
@@ -101,7 +101,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
-                        <h2>Donde ubicar tu codigo</h2>
+                        <h2>Donde ubicar tu código</h2>
 
 @if (isset($dni))
 {{$dni}}
@@ -142,7 +142,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-danger">Descargar</button>
       </div>
     </div>
   </div>
@@ -161,9 +160,9 @@
                     <div class="col-lg-2">
                         <h5 class="text-white">INDICE</h5>
                         <ul class="list-unstyled">
-                            <li><a href="{{route('index')}}">Incio</a></li>
-                            <li><a href="{{route('validacion')}}">Consulta de Codigo</a></li>
-                            <li><a href="{{route('login')}}">Inicio de Sesion</a></li>
+                            <li><a href="{{route('index')}}">Inicio</a></li>
+                            <li><a href="{{route('validacion')}}">Consulta de Código</a></li>
+                            <li><a href="{{route('login')}}">Inicio de Sesión</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-2">
@@ -180,7 +179,7 @@
                         <ul class="list-unstyled">
                             <li>Direccion: Jr. Omar Yali N°371</li>
                             <li>Correo: Informes@iibs.edu.pe</li>
-                            <li>Telefono: (603) 555-0123</li>
+                            <li>Telefono: (+51) 912 055 585</li>
                         </ul>
                     </div>
                 </div>
