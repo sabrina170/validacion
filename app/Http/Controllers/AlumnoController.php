@@ -319,21 +319,116 @@ class AlumnoController extends Controller
         // DB::table('users')->where('ku', $ku)
     }
 
-    public function buscaralumno2(Request $request)
-    {
-        $buscar = $request->input('buscar');
 
-        $alumnos = Alumno::where('dni', 'like', "%$buscar%")->get();
-
-        return view('alumnos.index')->with('alumnos');
-    }
 
     public function buscaralumno3(Request $request)
     {
-        $buscar = $request->input('buscar');
 
-        $alumnos = Alumno::where('dni', 'like', "%$buscar%")->get();
+        if ($request->ajax()) {
+            $output = '';
+            $query = $request->get('buscar');
+            if ($query != '') {
+                $data = DB::table('alumnos')
+                    ->where('dni', 'like', '%' . $query . '%')
+                    ->get();
+            } else {
+                $data = DB::table('alumnos')
+                    ->orderBy('id', 'desc')
+                    ->get();
+            }
+            $total_row = $data->count();
+            if ($total_row > 0) {
+                foreach ($data as $alum) {
 
-        return view('alumnos.index')->with('alumnos');
+                    $output .= '
+            <tr class="intro-x">
+                    <td>' . $alum->id . '</td>
+                    
+                    <td>
+                        <a href="" class="font-medium whitespace-nowrap">' . $alum->nombres . '</a> 
+                    </td>
+                    <td class="text-center">' . $alum->apellidos . '</td>
+                    <td class="text-center">' . $alum->dni . '</td>
+                <td>
+                ';
+                    if ($alum->tipo_mod == 1) {
+                        $output .= '
+                    <div class="bg-success/20 text-success rounded px-2 mt-1.5">
+                     <strong>Registrado</strong> por <strong>' . $alum->mod_user . '</strong>
+                    </div>';
+                    } elseif ($alum->tipo_mod == 2) {
+                        $output .= '
+                    <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">
+                       <strong>Actualizado</strong> por <strong>' . $alum->mod_user . '</strong>
+                    </div>
+                    ';
+                    } elseif ($alum->tipo_mod == 3) {
+                        $output .= ' <div class="bg-warning/20 text-warning rounded px-2 mt-1.5">
+                       <strong>Actualizo certificados</strong> ' . $alum->mod_user . '</strong>
+                    </div>';
+                    }
+                    $output .= '</td>
+                    <td class="text-center">
+                        <a  class="btn btn-rounded btn-primary-soft w-24 mr-1 mb-2" data-tw-toggle="modal"
+                             data-tw-target="#modalcrearcertificado' . $alum->id . '"> Crear Certificado</a>
+                    </td>
+                    <td class="text-center">' . date($alum->created_at) . '</td>
+                    <td class="table-report__action w-56">
+                        <div class="flex items-center ">
+                            <a class="flex items-center text-success mr-3"
+                             href="' . route('alumnos.detalles', $alum->id) . '">
+                             <i data-lucide="eyes-2" class="w-4 h-4 mr-1"></i> Detalles </a>
+
+                            <a class="flex items-center mr-3" 
+                            href="' . route('alumnos.edit', $alum->id) . '">
+                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
+
+                            <a class="flex items-center text-danger" data-tw-toggle="modal"
+                             data-tw-target="#delete-confirmation-modal' . $alum->id . '">
+                              <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
+                        </div>
+                    </td>
+                </tr>
+                        ';
+                }
+            } else {
+                $output = '
+                <tr>
+                    <td align="center" colspan="8">Ningun resultado</td>
+                </tr>
+                ';
+            }
+            $data = array(
+                'table_data'  => $output,
+                'total_data'  => $total_row
+            );
+            echo json_encode($data);
+        }
+    }
+
+    public function buscardni(Request $request)
+    {
+
+        if ($request->ajax()) {
+            $output = '';
+            $query = $request->get('buscar');
+            if ($query != '') {
+                $data = DB::table('alumnos')
+                    ->where('dni', $query)
+                    ->get();
+            } else {
+            }
+            $total_row = $data->count();
+            if ($total_row > 0) {
+                $resu = '<div class="text-danger mt-2">Ya existe un alumno con ese DNI</div>';
+            } else {
+                $resu = '<div class="text-success mt-2">Correcto</div';
+            }
+            $data = array(
+                // 'table_data'  => $output,
+                'total_dni'  => $resu
+            );
+            echo json_encode($data);
+        }
     }
 }

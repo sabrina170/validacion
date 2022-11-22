@@ -3,7 +3,7 @@
         <div class="modal-content">
              <!-- BEGIN: Modal Header -->
              <div class="modal-header">
-                <h2 class="font-medium text-base mr-auto">Registro de Alumnos</h2>
+                <h2 class="font-medium text-base mr-auto">Registro de Alumnos</h2> 
             </div> <!-- END: Modal Header -->
             <ul class="nav nav-tabs" role="tablist">
                 <li id="example-1-tab" class="nav-item flex-1" role="presentation">
@@ -30,8 +30,9 @@
                          </div>
                          <div class="col-span-12 sm:col-span-12 input-form">
                              <label for="modal-form-1" class="form-label">DNI</label>
-                             <input id="modal-form-1" type="number" class="form-control form-control-rounded"
+                             <input id="buscardni" type="number" class="form-control form-control-rounded"
                              placeholder="76232421" name="dni" required>
+                             <span id="total_dni"></span>
                           </div>
                          
                          <div class="col-span-12 sm:col-span-12">

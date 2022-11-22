@@ -4,7 +4,7 @@
 
 <div class="intro-y flex items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">
-        Alumnos
+        Alumnos <span  id="total_records"></span>
     </h2>
 </div>
 <!-- BEGIN: Profile Info -->
@@ -20,27 +20,24 @@
          <i data-lucide="alert-triangle" class="w-6 h-6 mr-2"></i> {{ Session::has('message')}} </div>
     @endif
     
-    <div class="search hidden sm:block">
-        <form action="" action="{{ route('buscaralumno2') }}" method="post">
-            @csrf
-            <input type="number" id="buscar" name="buscar" class="search__input form-control border-transparent" placeholder="Buscar por DNI...">
+    {{-- <div class="search hidden sm:block">
+            <input type="text" name="buscar" id="buscar"
+             class="search__input form-control border-transparent" placeholder="Buscar por DNI...">
             <button type="submit">Buscar</button>
-        </form>
-    </div>
-    <div id="result" class="panel panel-default" style="display:none">
-        <ul class="list-group" id="memList">
-            @if(isset($alumnos))
-            @foreach($alumnos as $alum)
-                <li class="list-group-item">
-                    
-                    {{ $alum->apellidos}}
-                    </li>
-            @endforeach
-        @else
-            <li class="list-group-item">No Results Found</li>
-        @endif
-        </ul>
-    </div>
+       
+    </div> --}}
+
+  
+        <div class="col-span-12">
+            <div class="search  sm:block">
+            <div class="form-group">
+                <input type="text" name="buscar" id="buscar"  
+                class="search__input form-control border-transparent" placeholder="Buscar por DNI..." autocomplete="off">
+            </div>
+            </div>
+           
+        </div>
+      
 
     <!-- BEGIN: Data List -->
     <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
@@ -126,20 +123,39 @@
 @endsection
 @section('js')
     <script>
-          $(document).keyup(function () {
-        var buscar = $('#buscar').val();
-        // alert(buscar);
-        if (buscar="") {
-            $('#memList').html("");
-            $('#result').hide();
-        }else{
-            // $.get(route("buscaralumno3",buscar),function (data) {
-        $.get("{{route('buscaralumno3',)}}",function (data) {
-            $('#memList').empty().html(data);
-            $('#result').show();
-            })
-        }
-    })
+   $(document).ready(function(){
+            $('#buscar').on('keyup',function () {
+                var query = $(this).val();
+                $.ajax({
+                    url:'{{ route('buscaralumno3') }}',
+                    type:'GET',
+                    data:{'buscar':query},
+                    dataType:'json',
+                    success:function (data) {
+                        // $('#product_list').html(data);
+                        $('tbody').html(data.table_data);
+                        $('#total_records').text(data.total_data);
+                    }
+                })
+            });
+            
+            // Buscar dni que ya existe
+            $('#buscardni').on('keyup',function () {
+                var query = $(this).val();
+                $.ajax({
+                    url:'{{ route('buscardni') }}',
+                    type:'GET',
+                    data:{'buscar':query},
+                    dataType:'json',
+                    success:function (data) {
+                        // $('#product_list').html(data);
+                        // $('tbody').html(data.table_data);
+                        $('#total_dni').html(data.total_dni);
+                    }
+                })
+            });
+
+        });
 
     </script>
 @endsection

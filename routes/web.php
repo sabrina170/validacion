@@ -61,9 +61,10 @@ Route::delete('usuario/{user}/eliminar', [UserController::class, "destroy"])->na
 Route::put('actualizar-usuario', [UserController::class, "editaruser"])->name('editaruser');
 
 // BUSCADOR
-Route::get('/search2', [AlumnoController::class, "buscaralumno2"])->name('buscaralumno2');
-Route::get('/search3/{buscar}', [AlumnoController::class, "buscaralumno3"])->name('buscaralumno3');
+Route::get('search3', [AlumnoController::class, "buscaralumno3"])->name('buscaralumno3');
+Route::get('buscardni', [AlumnoController::class, "buscardni"])->name('buscardni');
 
+// Route::get('search', [AutosearchController::class, 'autosearch'])->name('search');
 
 
 // administrador
