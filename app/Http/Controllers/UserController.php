@@ -69,6 +69,9 @@ class UserController extends Controller
             $request->session()->regenerate();
             if (Auth::user()->hasRole('admin')) {
                 return redirect()->intended('alumnos');
+            }
+            if (Auth::user()->hasRole('trabajador')) {
+                return redirect()->intended('alumnos');
             } else {
                 return redirect()->intended('estudiante');
             }

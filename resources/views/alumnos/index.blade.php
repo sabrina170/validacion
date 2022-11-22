@@ -99,10 +99,11 @@
                             <a class="flex items-center mr-3" 
                             href="{{route('alumnos.edit',$alum->id)}}">
                                  <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-
+                                 @if (Auth::user()->hasRole('admin'))
                             <a class="flex items-center text-danger" data-tw-toggle="modal"
                              data-tw-target="#delete-confirmation-modal{{$alum->id}}">
                               <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
+                              @endif
                         </div>
                     </td>
                 </tr>
